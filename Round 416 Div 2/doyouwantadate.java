@@ -1,3 +1,7 @@
+//THIS FAILED ON CASE 69
+//THE SAME ALGORITHM WORKS IN C++
+
+
 import java.util.*;
 import java.io.*;
 public class doyouwantadate
