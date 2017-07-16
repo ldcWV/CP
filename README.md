@@ -1,7 +1,7 @@
 # Competitions
 My solutions to computing competition problems
 
-Progress (Gold)
+# Progress (Gold)
 2014-2015
 First: 000
 Second: 000
