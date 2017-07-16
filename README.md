@@ -9,7 +9,7 @@
 * First: 000
 * Second: 010
 * Third: 000
-* US Open: 001
+* US Open: 011
 
 ## 2016-2017
 * First: 000
