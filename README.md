@@ -7,7 +7,7 @@
 * US Open: 011
 
 ### 2016-2017
-* First: 000
+* First: 100
 * Second: 000
 * Third: 110
 * US Open: 000
