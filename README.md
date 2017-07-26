@@ -9,5 +9,5 @@
 ### 2016-2017
 * First: 110
 * Second: 000
-* Third: 110
+* Third: 111
 * US Open: 000
