@@ -1,8 +1,8 @@
 # Progress (Gold)
-## 22/23 done
+## 23/23 done
 ### 2015-2016
 * First: 111
-* Second: 011
+* Second: 111
 * Third: 111
 * US Open: 111
 
