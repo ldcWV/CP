@@ -49,7 +49,7 @@ void update(int u, int a, int b, int k, int x, int y) {
         s[k]+=u*(y-a+1);
     }
     else {
-        s[k]+=u*(a-x+1);
+        s[k]+=u*(b-x+1);
     }
     int d = (x+y)/2;
     update(u, a, b, 2*k, x, d);
@@ -86,6 +86,6 @@ int main() {
             s[i]=s[2*i]+s[2*i+1];
         }
     }
-    update(3, 0, 1, 1, 0, treeSize/2-1);
-    cout << sum(0, 2, 1, 0, treeSize/2-1) << endl;
+    update(3, 1, 4, 1, 0, treeSize/2-1);
+    cout << sum(3, 5, 1, 0, treeSize/2-1) << endl;
 }
