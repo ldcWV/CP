@@ -39,7 +39,20 @@ int arr[14];
 int s[1024];
 int z[1024];
 
+void propagate(int k) {
+    if(z[k]!=0) {
+        int height=floor(log2((double)(treeSize)))-floor(log2((double)(k)))-1;
+        s[k]+=z[k]*pow(2,height);
+        if(!(k>=n)) { //if it is not a leaf
+            z[2*k]+=z[k];
+            z[2*k+1]+=z[k];
+        }
+        z[k]=0;
+    }
+}
+
 void update(int u, int a, int b, int k, int x, int y) {
+    propagate(k);
     if(b<x || a>y) return;
     if(x>=a && y<=b) {
         z[k]+=u;
@@ -57,15 +70,7 @@ void update(int u, int a, int b, int k, int x, int y) {
 }
 
 int sum(int a, int b, int k, int x, int y) {
-    if(z[k]!=0) { //we might have to propagate it
-        int height=floor(log2((double)(treeSize)))-floor(log2((double)(k)))-1;
-        s[k]+=z[k]*pow(2,height);
-        if(!(k>=n)) { //if it is not a leaf
-            z[2*k]+=z[k];
-            z[2*k+1]+=z[k];
-        }
-        z[k]=0;
-    }
+    propagate(k);
     if(b<x || a>y) return 0;
     if(x>=a && y<=b) return s[k];
     int d = (x+y)/2;
