@@ -5,3 +5,5 @@ test2: testing bit manipulation on some random dp problem
 test3: testing kosaraju's algorithm (finds strongly connected components)
 
 test4: lazy segment tree
+
+test 5: sparse segment tree
