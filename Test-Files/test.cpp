@@ -35,15 +35,15 @@ typedef pair<int,int> pi;
 
 int n = 10;
 int treeSize=1;
-int init = 1;
+int init = 0;
 
 int op(int a, int b) {
-    return a*b;
+    return a+b;
 }
 
 int query(int a, int b, int t[]) {
-    a+=n;
-    b+=n;
+    a+=treeSize/2;
+    b+=treeSize/2;
     int ans = init;
     while(a <= b) {
         if(a%2==1) ans = op(ans, t[a++]);
@@ -63,10 +63,20 @@ int main() {
     while(treeSize <= 2*n) treeSize*=2;
     int segTree[treeSize];
     FORd(i, 1, treeSize) {
-        if(i>=2*n) segTree[i]=init;
-        else if(i>=n) segTree[i]=arr[i-n];
+        if(i>=treeSize/2+n) segTree[i]=init;
+        else if(i>=treeSize/2) segTree[i]=arr[i-treeSize/2];
         else {
             segTree[i]=op(segTree[2*i],segTree[2*i+1]);
+        }
+    }
+    int k = 0;
+    int s = 0;
+    FOR(i, 1, treeSize) {
+        cout << segTree[i] << " ";
+        if(s+(1<<k)==i) {
+            cout << endl;
+            s+=1<<k;
+            k++;
         }
     }
     cout << query(3, 7, segTree) << endl;
