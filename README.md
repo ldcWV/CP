@@ -13,7 +13,7 @@
 * US Open: 11
 
 # Progress (Platinum)
-## 2/24 done
+## 3/24 done
 ### 2015-2016
 * First: 000
 * Second: 000
@@ -21,7 +21,7 @@
 * US Open: 000
 
 ### 2016-2017
-* First: 100
+* First: 110
 * Second: 000
 * Third: 000
 * US Open: 000
