@@ -2,7 +2,7 @@
  ID: ldorian1
  LANG: C++11
  TASK: mincross
- */
+ *
 
 #include <iostream>
 #include <fstream>
