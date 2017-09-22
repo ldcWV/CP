@@ -49,10 +49,6 @@ int sum(int x1, int x2, int y1, int y2) {
     return pref[x2][y2]-pref[x1-1][y2]-pref[x2][y1-1]+pref[x1-1][y1-1];
 }
 
-int bsum(int x1, int x2, int y1, int y2) {
-    return sum(x1,x2,y1,y2)-sum(x1+1,x2-1,y1+1,y2-1);
-}
-
 int main() {
     ios::sync_with_stdio(0);
     cin.tie(0);
