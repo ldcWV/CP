@@ -16,7 +16,7 @@
 ## 7/24 done
 ### 2015-2016
 * First: 101
-* Second: 010
+* Second: 100
 * Third: 010
 * US Open: 000
 
@@ -24,4 +24,4 @@
 * First: 110
 * Second: 000
 * Third: 100
-* US Open: 000
+* US Open: 100
