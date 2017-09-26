@@ -13,7 +13,7 @@
 * US Open: 11
 
 # Progress (Old Gold)
-## 1/40 done
+## 2/40 done
 ### 2013-2014
 * First: 000
 * Second: 000
@@ -24,7 +24,7 @@
 
 ### 2014-2015
 * First: 000
-* Second: 000
+* Second: 010
 * Third: 000
 * US Open: 010
 
