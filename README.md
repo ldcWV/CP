@@ -12,6 +12,22 @@
 * Third: 111
 * US Open: 11
 
+# Progress (Old Gold)
+## 0/40 done
+### 2013-2014
+* First: 000
+* Second: 000
+* Third: 000
+* US Open: 000
+
+### 2014-2015
+* First: 000
+* Second: 000
+* Third: 000
+* Fourth: 000
+* Fifth: 000
+* US Open: 000
+
 # Progress (Platinum)
 ## 9/24 done
 ### 2015-2016
