@@ -1,29 +1,66 @@
-template<int SZ> struct maxtree {
-    int tree[2*SZ+1];
-    int p2;
+struct node {
+    int val;
+    int l, r;
+    node* left;
+    node* right;
+    node(int l, int r) {
+        this -> val = 0;
+        this -> l = l;
+        this -> r = r;
+        this -> left = nullptr;
+        this -> right = nullptr;
+    }
+};
+
+template<int SZ> struct maxtree{
+    node* root;
     maxtree() {
-        F0R(i, 2*SZ+1) tree[i] = -(1<<30)+1-(1<<30);
-        p2 = 1;
-        while(p2 < SZ) p2*=2;
+        int ub = 1;
+        while(ub < SZ) ub *= 2;
+        root = new node(0, ub-1);
+        root -> val = (-(1<<30)+1)-(1<<30);
+    }
+    void updN(node* n, int pos, int val) {
+        if(pos < n->l || pos > n->r) return;
+        if(n->l == n->r) {
+            n->val = val;
+            return;
+        }
+        
+        int mid = (n->l + n->r)/2;
+        if(n->left == nullptr) {
+            n->left = new node(n->l, mid);
+            n->left->val = (-(1<<30)+1)-(1<<30);
+        }
+        if(n->right == nullptr) {
+            n->right = new node(mid+1, n->r);
+            n->right->val = (-(1<<30)+1)-(1<<30);
+        }
+        
+        updN(n->left, pos, val);
+        updN(n->right, pos, val);
+        n->val = max(n->left->val, n->right->val);
     }
     void upd(int pos, int val) {
-        pos += p2+1;
-        tree[pos] = val;
-        pos /= 2;
-        while(pos > 0) {
-            tree[pos] = max(tree[2*pos], tree[2*pos+1]);
-            pos /= 2;
-        }
+        updN(root, pos, val);
     }
-    int query(int l, int r) {
-        int ma = -(1<<30)+1-(1<<30);
-        l += p2+1;
-        r += p2+1;
-        while(l <= r) {
-            if(l%2 == 1) ma = max(ma, tree[l++]);
-            if(r%2 == 0) ma = max(ma, tree[r--]);
-            l /= 2; r /= 2;
+    int queryN(node* n, int i1, int i2) {
+        if(i2 < n->l || i1 > n->r) return (-(1<<30)+1)-(1<<30);
+        if(n->l == n->r) return n->val;
+        
+        int mid = (n->l + n->r)/2;
+        if(n->left == nullptr) {
+            n->left = new node(n->l, mid);
+            n->left->val = (-(1<<30)+1)-(1<<30);
         }
-        return ma;
+        if(n->right == nullptr) {
+            n->right = new node(mid+1, n->r);
+            n->right->val = (-(1<<30)+1)-(1<<30);
+        }
+        
+        return max(queryN(n->left, i1, i2), queryN(n->right, i1, i2));
+    }
+    int query(int i1, int i2) {
+        return queryN(root, i1, i2);
     }
 };
