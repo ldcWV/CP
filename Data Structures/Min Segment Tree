@@ -1,7 +1,7 @@
-template<int SZ> struct mintree{
+template<int SZ> struct mintree {
     int tree[2*SZ+1];
     int p2;
-    mintree(){
+    mintree() {
         F0R(i, 2*SZ+1) tree[i] = ((1<<30)-1)+(1<<30);
         p2 = 1;
         while(p2 < SZ) p2*=2;
