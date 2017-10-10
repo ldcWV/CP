@@ -1,4 +1,4 @@
-template<int SZ> struct sumtree{
+template<int SZ> struct sumtree {
     int tree[2*SZ+1];
     int p2;
     sumtree() {
