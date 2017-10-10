@@ -1,7 +1,7 @@
-template<int SZ> struct maxtree{
+template<int SZ> struct maxtree {
     int tree[2*SZ+1];
     int p2;
-    maxtree(){
+    maxtree() {
         F0R(i, 2*SZ+1) tree[i] = -(1<<30)+1-(1<<30);
         p2 = 1;
         while(p2 < SZ) p2*=2;
