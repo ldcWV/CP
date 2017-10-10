@@ -1,0 +1,29 @@
+template<int SZ> struct sumtree{
+    int tree[2*SZ+1];
+    int p2;
+    sumtree(){
+        F0R(i, 2*SZ+1) tree[i] = 0;
+        p2 = 1;
+        while(p2 < SZ) p2*=2;
+    }
+    void upd(int pos, int val) {
+        pos += p2+1;
+        tree[pos] = val;
+        pos /= 2;
+        while(pos > 0) {
+            tree[pos] = tree[2*pos] + tree[2*pos+1];
+            pos /= 2;
+        }
+    }
+    int query(int l, int r) {
+        int s = 0;
+        l += p2+1;
+        r += p2+1;
+        while(l <= r) {
+            if(l%2 == 1) s += tree[l++];
+            if(r%2 == 0) s += tree[r--];
+            l /= 2; r /= 2;
+        }
+        return s;
+    }
+};
