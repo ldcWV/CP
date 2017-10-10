@@ -43,7 +43,7 @@ template<int SZ> struct sumtree{
         
         int mid = (n->l + n->r)/2;
         if(n->left == nullptr) n->left = new node(n->l, mid);
-        if(n->right == nullptr) n-> right = new node(mid+1, n->r);
+        if(n->right == nullptr) n->right = new node(mid+1, n->r);
         
         return queryN(n->left, i1, i2) + queryN(n->right, i1, i2);
     }
