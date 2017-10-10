@@ -1,0 +1,29 @@
+template<int SZ> struct mintree{
+    int tree[2*SZ+1];
+    int p2;
+    mintree(){
+        F0R(i, 2*SZ+1) tree[i] = ((1<<30)-1)+(1<<30);
+        p2 = 1;
+        while(p2 < SZ) p2*=2;
+    }
+    void upd(int pos, int val) {
+        pos += p2+1;
+        tree[pos] = val;
+        pos /= 2;
+        while(pos > 0) {
+            tree[pos] = min(tree[2*pos], tree[2*pos+1]);
+            pos /= 2;
+        }
+    }
+    int query(int l, int r) {
+        int mi = ((1<<30)-1)+(1<<30);
+        l += p2+1;
+        r += p2+1;
+        while(l <= r) {
+            if(l%2 == 1) mi = min(mi, tree[l++]);
+            if(r%2 == 0) mi = min(mi, tree[r--]);
+            l /= 2; r /= 2;
+        }
+        return mi;
+    }
+};
