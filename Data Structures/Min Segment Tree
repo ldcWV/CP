@@ -1,17 +1,3 @@
-struct node {
-    int val;
-    int l, r;
-    node* left;
-    node* right;
-    node(int l, int r) {
-        this -> val = 0;
-        this -> l = l;
-        this -> r = r;
-        this -> left = nullptr;
-        this -> right = nullptr;
-    }
-};
-
 template<int SZ> struct mintree{
     node* root;
     mintree() {
