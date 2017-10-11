@@ -26,6 +26,7 @@ template<int SZ> struct sumtree{
     int queryN(node* n, int i1, int i2) {
         if(i2 < n->l || i1 > n->r) return 0;
         if(n->l == n->r) return n->val;
+        if(n->l >= i1 && n->r <= i2) return n->val;
         
         int mid = (n->l + n->r)/2;
         if(n->left == nullptr) n->left = new node(n->l, mid);
