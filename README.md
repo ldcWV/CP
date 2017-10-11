@@ -13,11 +13,11 @@
 * US Open: 11
 
 # Progress (Old Gold)
-## 6/40 done
+## 7/40 done
 ### 2013-2014
 * November: 001
 * December: 010
-* January: 000
+* January: 010
 * February: 010
 * March: 000
 * US Open: 000
