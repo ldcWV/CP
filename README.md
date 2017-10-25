@@ -29,15 +29,15 @@
 * US Open: 010
 
 # Progress (Platinum)
-## 14/24 done
+## 15/24 done
 ### 2015-2016
 * December: 101
 * January: 100
-* February: 111
+* February: 110
 * US Open: 100
 
 ### 2016-2017
 * December: 110
-* January: 110
-* February: 110
+* January: 111
+* February: 111
 * US Open: 100
