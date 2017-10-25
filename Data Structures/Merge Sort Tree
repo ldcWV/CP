@@ -1,0 +1,19 @@
+template<int SZ> struct mstree {
+    Tree<int> val[SZ+1]; // for offline queries use vector instead
+    
+    void upd(int x, int y) { // x-coordinate between 1 and SZ inclusive
+        x++;
+        for (;x <= SZ; x += (x&-x)) val[x].insert(y);
+    }
+    
+    int query(int x, int y) {
+        x++;
+        int t = 0;
+        for (;x > 0; x -= (x&-x)) t += val[x].order_of_key(y+1);
+        return t;
+    }
+    
+    int query(int lox, int hix, int loy, int hiy) { // query number of elements within a rectangle
+        return query(hix,hiy)-query(lox-1,hiy)-query(hix,loy-1)+query(lox-1,loy-1);
+    }
+};
