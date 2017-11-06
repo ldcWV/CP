@@ -13,17 +13,19 @@ template<int SZ> struct sumtree{
         }
         
         int mid = (n->l + n->r)/2;
-        int s = 0;
         if(pos > mid) {
             if(n->right == nullptr) n->right = new node(mid+1, n->r);
             updN(n->right, pos, val);
-            s += n->right->val;
         }
         else {
             if(n->left == nullptr) n->left = new node(n->l, mid);
             updN(n->left, pos, val);
-            s += n->left->val;
         }
+        
+        int s = 0;
+        if(n->right != nullptr) s += n->right->val;
+        if(n->left != nullptr) s += n->left->val;
+        
         n->val = s;
     }
     void upd(int pos, int val) {
