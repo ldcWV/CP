@@ -79,8 +79,10 @@ template<int w, int h> struct sumtree2d{
             updN(n->left, x, y, val);
         }
         
-        
-        n->upd(y, n->left->query(y, y) + n->right->query(y, y));
+        int s = 0;
+        if(n->left != nullptr) s += n->left->query(y, y);
+        if(n->right != nullptr) s += n->right->query(y, y);
+        n->upd(y, s);
     }
     void upd(int x, int y, int val) {
         updN(root, x, y, val);
@@ -90,11 +92,11 @@ template<int w, int h> struct sumtree2d{
         if(n->l == n->r) return n->query(y1, y2);
         if(n->l >= x1 && n->r <= x2) return n->query(y1, y2);
         
-        int mid = (n->l + n->r)/2;
-        if(n->left == nullptr) n->left = new sumtreenode(n->l, mid, h);
-        if(n->right == nullptr) n->right = new sumtreenode(mid+1, n->r, h);
+        int s = 0;
+        if(n->left != nullptr) s += queryN(n->left, x1, y1, x2, y2);
+        if(n->right != nullptr) s += queryN(n->right, x1, y1, x2, y2);
         
-        return queryN(n->left, x1, y1, x2, y2) + queryN(n->right, x1, y1, x2, y2);
+        return s;
     }
     int query(int x1, int y1, int x2, int y2) {
         return queryN(root, x1, y1, x2, y2);
