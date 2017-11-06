@@ -7,18 +7,24 @@ template<int SZ> struct sumtree{
     }
     void updN(node* n, int pos, int val) {
         if(pos < n->l || pos > n->r) return;
-        n->val = val;
-        if(n->l == n->r) return;
+        if(n->l == n->r) {
+            n->val = val;
+            return;
+        }
         
         int mid = (n->l + n->r)/2;
+        int s = 0;
         if(pos > mid) {
             if(n->right == nullptr) n->right = new node(mid+1, n->r);
             updN(n->right, pos, val);
+            s += n->right->val;
         }
         else {
             if(n->left == nullptr) n->left = new node(n->l, mid);
             updN(n->left, pos, val);
+            s += n->left->val;
         }
+        n->val = s;
     }
     void upd(int pos, int val) {
         updN(root, pos, val);
@@ -28,11 +34,11 @@ template<int SZ> struct sumtree{
         if(n->l == n->r) return n->val;
         if(n->l >= i1 && n->r <= i2) return n->val;
         
-        int ans = 0;
-        if(n->left != nullptr) ans += queryN(n->left, i1, i2);
-        if(n->right != nullptr) ans += queryN(n->right, i1, i2);
+        int s = 0;
+        if(n->left != nullptr) s += queryN(n->left, i1, i2);
+        if(n->right != nullptr) s += queryN(n->right, i1, i2);
         
-        return ans;
+        return s;
     }
     int query(int i1, int i2) {
         return queryN(root, i1, i2);
