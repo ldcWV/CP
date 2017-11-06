@@ -13,12 +13,14 @@ template<int SZ> struct sumtree{
         }
         
         int mid = (n->l + n->r)/2;
-        if(n->left == nullptr) n->left = new node(n->l, mid);
-        if(n->right == nullptr) n-> right = new node(mid+1, n->r);
-        
-        updN(n->left, pos, val);
-        updN(n->right, pos, val);
-        n->val = n->left->val + n->right->val;
+        if(pos > mid) {
+            if(n->right == nullptr) n->right = new node(mid+1, n->r);
+            updN(n->right, pos, val);
+        }
+        else {
+            if(n->left == nullptr) n->left = new node(n->l, mid);
+            updN(n->left, pos, val);
+        }
     }
     void upd(int pos, int val) {
         updN(root, pos, val);
