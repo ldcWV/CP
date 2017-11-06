@@ -1,7 +1,7 @@
 template<int sz> struct BIT {
     int b[sz+1];
     BIT() {
-        M00(i, sz) b[i] = 0;
+        M00(i, sz+1) b[i] = 0;
     }
     void add(int k, int val) {
         k++;
