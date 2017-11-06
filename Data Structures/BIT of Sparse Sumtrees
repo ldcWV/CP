@@ -7,18 +7,20 @@ struct st{
     }
     void addN(node* n, int pos, int val) {
         if(pos < n->l || pos > n->r) return;
+        n->val += val;
         if(n->l == n->r) {
-            n->val += val;
             return;
         }
         
         int mid = (n->l + n->r)/2;
-        if(n->left == nullptr) n->left = new node(n->l, mid);
-        if(n->right == nullptr) n-> right = new node(mid+1, n->r);
-        
-        addN(n->left, pos, val);
-        addN(n->right, pos, val);
-        n->val = n->left->val + n->right->val;
+        if(pos > mid) {
+            if(n->right == nullptr) n->right = new node(mid+1, n->r);
+            addN(n->right, pos, val);
+        }
+        else {
+            if(n->left == nullptr) n->left = new node(n->l, mid);
+            addN(n->left, pos, val);
+        }
     }
     void add(int pos, int val) {
         addN(root, pos, val);
@@ -28,11 +30,11 @@ struct st{
         if(n->l == n->r) return n->val;
         if(n->l >= i1 && n->r <= i2) return n->val;
         
-        int mid = (n->l + n->r)/2;
-        if(n->left == nullptr) n->left = new node(n->l, mid);
-        if(n->right == nullptr) n->right = new node(mid+1, n->r);
+        int ans = 0;
+        if(n->left != nullptr) ans += queryN(n->left, i1, i2);
+        if(n->right != nullptr) ans += queryN(n->right, i1, i2);
         
-        return queryN(n->left, i1, i2) + queryN(n->right, i1, i2);
+        return ans;
     }
     int query(int i1, int i2) {
         return queryN(root, i1, i2);
