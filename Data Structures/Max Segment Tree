@@ -14,18 +14,20 @@ template<int SZ> struct maxtree{
         }
         
         int mid = (n->l + n->r)/2;
-        if(n->left == nullptr) {
-            n->left = new node(n->l, mid);
-            n->left->val = (-(1<<30)+1)-(1<<30);
+        if(pos > mid) {
+            if(n->right == nullptr) n->right = new node(mid+1, n->r), n->right->val = (-(1<<30)+1)-(1<<30);
+            updN(n->right, pos, val);
         }
-        if(n->right == nullptr) {
-            n->right = new node(mid+1, n->r);
-            n->right->val = (-(1<<30)+1)-(1<<30);
+        else {
+            if(n->left == nullptr) n->left = new node(n->l, mid), n->left->val = (-(1<<30)+1)-(1<<30);
+            updN(n->left, pos, val);
         }
         
-        updN(n->left, pos, val);
-        updN(n->right, pos, val);
-        n->val = max(n->left->val, n->right->val);
+        int s = (-(1<<30)+1)-(1<<30);
+        if(n->left != nullptr) s = max(s, n->left->val);
+        if(n->right != nullptr) s = max(s, n->right->val);
+        
+        n->val = s;
     }
     void upd(int pos, int val) {
         updN(root, pos, val);
@@ -35,17 +37,11 @@ template<int SZ> struct maxtree{
         if(n->l == n->r) return n->val;
         if(n->l >= i1 && n->r <= i2) return n->val;
         
-        int mid = (n->l + n->r)/2;
-        if(n->left == nullptr) {
-            n->left = new node(n->l, mid);
-            n->left->val = (-(1<<30)+1)-(1<<30);
-        }
-        if(n->right == nullptr) {
-            n->right = new node(mid+1, n->r);
-            n->right->val = (-(1<<30)+1)-(1<<30);
-        }
+        int s = (1<<30)-1+(1<<30);
+        if(n->left != nullptr) s = max(s, queryN(n->left, i1, i2));
+        if(n->right != nullptr) s = max(s, queryN(n->right, i1, i2));
         
-        return max(queryN(n->left, i1, i2), queryN(n->right, i1, i2));
+        return s;
     }
     int query(int i1, int i2) {
         return queryN(root, i1, i2);
