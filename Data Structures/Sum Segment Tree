@@ -7,10 +7,8 @@ template<int SZ> struct sumtree{
     }
     void updN(node* n, int pos, int val) {
         if(pos < n->l || pos > n->r) return;
-        if(n->l == n->r) {
-            n->val = val;
-            return;
-        }
+        n->val = val;
+        if(n->l == n->r) return;
         
         int mid = (n->l + n->r)/2;
         if(pos > mid) {
