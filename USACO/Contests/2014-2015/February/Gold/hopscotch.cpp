@@ -142,5 +142,5 @@ int main() {
             t[arr[i][j]].upd(i, dp[i][j]);
         }
     }
-    cout << dp[0][0] << "\n";
+    fout << dp[0][0] << "\n";
 }
