@@ -1,0 +1,43 @@
+struct lel {
+    int sz;
+    pii par;
+    lel(int s, pii p) {
+        this->sz = s;
+        this->par = p;
+    }
+};
+
+template<int w, int h> struct DSU {
+    lel* e[w][h];
+    DSU() {
+        M00(i, w) M00(j, h) {
+            e[i][j] = new lel(1, MP(i, j));
+        }
+    }
+    pii get(pii x) {
+        int i = x.F;
+        int j = x.S;
+        if(e[i][j]->par != MP(i, j)) {
+            e[i][j]->par = get(e[i][j]->par);
+        }
+        return e[i][j]->par;
+    }
+    void unite(pii x, pii y) {
+        x = get(x);
+        y = get(y);
+        if(x == y) return;
+        lel* xp = e[x.F][x.S];
+        lel* yp = e[y.F][y.S];
+        if(xp->sz < yp->sz) swap(xp, yp), swap(x, y);
+        xp->sz += yp->sz, yp->par = x;
+    }
+    bool connected(pii x, pii y) {
+        x = get(x);
+        y = get(y);
+        return (x == y);
+    }
+    int s(pii x) { //size of component containing x
+        x = get(x);
+        return e[x.F][x.S]->sz;
+    }
+};
