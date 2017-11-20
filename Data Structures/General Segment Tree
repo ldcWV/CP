@@ -1,0 +1,74 @@
+template<class T> struct node {
+    T val;
+    int l, r;
+    node* left;
+    node* right;
+    node(int l, int r) {
+        this -> l = l;
+        this -> r = r;
+        this -> left = nullptr;
+        this -> right = nullptr;
+    }
+};
+
+template<class T, int SZ> struct segtree{
+    node<T>* root;
+    T identity = "";
+    T comb(node<T>* l, node<T>* r, int lb, int ub) {
+        T lv = (l == nullptr) ? identity : l->val;
+        T rv = (r == nullptr) ? identity : r->val;
+        
+        return lv + rv;
+    }
+    void updLeaf(node<T>* l, T val) {
+        l->val += val;
+    }
+    
+    segtree() {
+        int ub = 1;
+        while(ub < SZ) ub *= 2;
+        root = new node<T>(0, ub-1);
+        root -> val = identity;
+    }
+    void updN(node<T>* n, int pos, T val) {
+        if(pos < n->l || pos > n->r) return;
+        if(n->l == n->r) {
+            updLeaf(n, val);
+            return;
+        }
+        
+        int mid = (n->l + n->r)/2;
+        if(pos > mid) {
+            if(n->right == nullptr) {
+                n->right = new node<T>(mid+1, n->r);
+                n->right->val = identity;
+            }
+            updN(n->right, pos, val);
+        }
+        else {
+            if(n->left == nullptr) {
+                n->left = new node<T>(n->l, mid);
+                n->left->val = identity;
+            }
+            updN(n->left, pos, val);
+        }
+        
+        n->val = comb(n->left, n->right, n->l, n->r);
+    }
+    void upd(int pos, T val) {
+        updN(root, pos, val);
+    }
+    T queryN(node<T>* n, int i1, int i2) {
+        if(i2 < n->l || i1 > n->r) return identity;
+        if(n->l == n->r) return n->val;
+        if(n->l >= i1 && n->r <= i2) return n->val;
+        
+        if(n->left != nullptr) queryN(n->left, i1, i2);
+        if(n->right != nullptr) queryN(n->right, i1, i2);
+        
+        return comb(n->left, n->right, n->l, n->r);
+    }
+    T query(int i1, int i2) {
+        return queryN(root, i1, i2);
+    }
+};
