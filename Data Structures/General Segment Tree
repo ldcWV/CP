@@ -13,7 +13,7 @@ template<class T> struct node {
 
 template<class T, int SZ> struct segtree{
     node<T>* root;
-    T identity = asdf(0, "");
+    T identity = asdf(9001, "a"); //comb(identity, identity) should equal identity
     T comb(T l, T r) {
         T ans = asdf();
         ans.a = l.a + r.a;
@@ -21,7 +21,7 @@ template<class T, int SZ> struct segtree{
         return ans;
     }
     void updLeaf(node<T>* l, T val) {
-        l->val = val;
+        l->val = comb(l->val, val);
     }
     
     segtree() {
