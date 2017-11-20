@@ -13,22 +13,22 @@ template<class T> struct node {
 
 template<class T, int SZ> struct segtree{
     node<T>* root;
-    T identity = "";
-    T comb(node<T>* l, node<T>* r, int lb, int ub) {
-        T lv = (l == nullptr) ? identity : l->val;
-        T rv = (r == nullptr) ? identity : r->val;
-        
-        return lv + rv;
+    T identity = asdf(0, "");
+    T comb(T l, T r) {
+        T ans = asdf();
+        ans.a = l.a + r.a;
+        ans.b = l.b + r.b;
+        return ans;
     }
     void updLeaf(node<T>* l, T val) {
-        l->val += val;
+        l->val = val;
     }
     
     segtree() {
         int ub = 1;
         while(ub < SZ) ub *= 2;
         root = new node<T>(0, ub-1);
-        root -> val = identity;
+        root->val = identity;
     }
     void updN(node<T>* n, int pos, T val) {
         if(pos < n->l || pos > n->r) return;
@@ -53,7 +53,9 @@ template<class T, int SZ> struct segtree{
             updN(n->left, pos, val);
         }
         
-        n->val = comb(n->left, n->right, n->l, n->r);
+        T lv = (n->left == nullptr) ? identity : n->left->val;
+        T rv = (n->right == nullptr) ? identity : n->right->val;
+        n->val = comb(lv, rv);
     }
     void upd(int pos, T val) {
         updN(root, pos, val);
@@ -63,10 +65,11 @@ template<class T, int SZ> struct segtree{
         if(n->l == n->r) return n->val;
         if(n->l >= i1 && n->r <= i2) return n->val;
         
-        if(n->left != nullptr) queryN(n->left, i1, i2);
-        if(n->right != nullptr) queryN(n->right, i1, i2);
+        T a = identity;
+        if(n->left != nullptr) a = comb(a, queryN(n->left, i1, i2));
+        if(n->right != nullptr) a = comb(a, queryN(n->right, i1, i2));
         
-        return comb(n->left, n->right, n->l, n->r);
+        return a;
     }
     T query(int i1, int i2) {
         return queryN(root, i1, i2);
