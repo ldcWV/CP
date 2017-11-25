@@ -1,5 +1,5 @@
 * priority_queue: push, pop, top, O(log n)
 * set: priority_queue but can delete, O(log n)
 * unordered_set: insert and erase elements, count and find, O(1)
-* map: key and value, can iterate through preserving order, O(log n)
+* map: key and value, can iterate through in increasing order, O(log n)
 * unordered_map: map but iteration does not give predictable order, O(1)
