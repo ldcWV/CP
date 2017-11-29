@@ -1,0 +1,19 @@
+template<int SZ> struct trie {
+    int t[SZ][26];
+    bool mark[SZ][26];
+    int cursz;
+    trie() {
+        M00(i, SZ) M00(j, 26) t[i][j] = -1;
+        M00(i, SZ) M00(j, 26) mark[i][j] = 0;
+        cursz = 1;
+    }
+    void insert(string k) {
+        int cur = 0;
+        M00(i, k.length()) {
+            int v = k[i] - 'a';
+            if(t[cur][v] == -1) t[cur][v] = cursz++;
+            if(i == k.length()-1) mark[cur][v] = 1;
+            cur = t[cur][v];
+        }
+    }
+};
