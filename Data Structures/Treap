@@ -34,6 +34,16 @@ struct treap {
         t2->left = merge(t1, t2->left);
         return t2;
     }
+    vector<treapNode*> traverse(treapNode* t, int val) {
+        vector<treapNode*> ans;
+        treapNode* cur = t;
+        while(cur != nullptr) {
+            ans.PB(cur);
+            if(val >= t->val) cur = t->right;
+            else cur = t->left;
+        }
+        return ans;
+    }
     void insertN(treapNode* t, int val) {
         pair<treapNode*, treapNode*> sp = split(t, val);
         merge(sp.F, new treapNode(val));
