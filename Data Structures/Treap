@@ -1,0 +1,54 @@
+struct treapNode {
+    int val;
+    int pri;
+    treapNode* left;
+    treapNode* right;
+    treapNode(int v) {
+        this->val = v;
+        this->pri = rand() % MOD;
+        this->left = nullptr;
+        this->right = nullptr;
+    }
+};
+
+struct treap {
+    treapNode* root;
+    pair<treapNode*, treapNode*> split(treapNode* t, int val) { //everything >= val goes right
+        if(t == nullptr) return MP(t, t);
+        if(t->val >= val) {
+            pair<treapNode*, treapNode*> sp = split(t->left, val);
+            t->left = sp.S;
+            return MP(sp.F, t);
+        }
+        pair<treapNode*, treapNode*> sp = split(t->right, val);
+        t->right = sp.F;
+        return MP(t, sp.S);
+    }
+    treapNode* merge(treapNode* t1, treapNode* t2) { //all keys in t1 < smallest key in t2
+        if(t1 == nullptr) return t2;
+        if(t2 == nullptr) return t1;
+        if(t1->pri > t2->pri) {
+            t1->right = merge(t1->right, t2);
+            return t1;
+        }
+        t2->left = merge(t1, t2->left);
+        return t2;
+    }
+    void insertN(treapNode* t, int val) {
+        pair<treapNode*, treapNode*> sp = split(t, val);
+        merge(sp.F, new treapNode(val));
+        merge(sp.F, sp.S);
+    }
+    void insert(int val) {
+        insertN(root, val);
+    }
+    void deletN(treapNode* t, int val) {
+        pair<treapNode*, treapNode*> sp1 = split(t, val);
+        pair<treapNode*, treapNode*> sp2 = split(sp1.S, val+1);
+        delete sp2.F;
+        merge(sp1.F, sp2.S);
+    }
+    void delet(int val) {
+        deletN(root, val);
+    }
+};
