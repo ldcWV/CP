@@ -9,9 +9,7 @@ template<int SZ> struct centroidDecomp {
         neighbor[v].PB(u);
     }
     void build() {
-        M00(i, SZ) {
-            vis[i] = 0;
-        }
+        M00(i, SZ) vis[i] = 0;
         solve(0);
     }
     int getSizes(int node) {
