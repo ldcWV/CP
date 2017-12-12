@@ -2,45 +2,46 @@ template<int SZ> struct centroidDecomp {
     vi neighbor[SZ];
     int subsize[SZ];
     bool vis[SZ];
+    int p[SZ];
     int par[SZ];
     vi child[SZ];
+    int numNodes;
+    
+    centroidDecomp(int num) {
+        this->numNodes = num;
+    }
     void addEdge(int u, int v) {
         neighbor[u].PB(v);
         neighbor[v].PB(u);
     }
     void build() {
-        M00(i, SZ) vis[i] = 0;
+        M00(i, numNodes) vis[i] = 0, par[i] = -1;
         solve(0);
+        M00(i, numNodes) child[par[i]].PB(i);
     }
-    int getSizes(int node) {
-        if(subsize[node] == -1) return 0; //this is its parent
-        if(subsize[node] != 0) return subsize[node]; //we already computed
-        subsize[node] = -1;
-        int ans = 1;
-        for(int ch: neighbor[node]) if(!vis[ch]) ans += getSizes(ch);
-        subsize[node] = ans;
-        return subsize[node];
+    void getSizes(int node) {
+        subsize[node] = 1;
+        for(int ch: neighbor[node]) if(!vis[ch] && ch != p[node]) {
+            p[ch] = node;
+            getSizes(ch);
+            subsize[node] += subsize[ch];
+        }
     }
-    int getCentroid(int root) { //get centroid in component containing root
+    int getCentroid(int root) {
+        p[root] = -1;
         getSizes(root);
         int cur = root;
-        int prev = cur;
         while(1) {
-            pi hi = MP(-1, -1);
-            for(int v: neighbor[root]) if(!vis[v] && v != prev) hi = max(hi, MP(subsize[v], v));
-            if(hi.F <= SZ/2 || hi.F == -1) return cur;
-            prev = cur;
+            pi hi = MP(subsize[root]-subsize[cur], cur);
+            for(int v: neighbor[cur]) if(!vis[v] && v != p[cur]) hi = max(hi, MP(subsize[v], v));
+            if(hi.F <= subsize[root]/2) return cur;
             cur = hi.S;
         }
     }
     int solve(int node) {
-        int cen = getCentroid(node);
-        vis[cen] = 1;
-        for(int ch: neighbor[node]) if(!vis[ch]) {
-            int cen2 = solve(ch);
-            par[cen2] = cen;
-            child[cen].PB(cen2);
-        }
-        return cen;
+        node = getCentroid(node);
+        vis[node] = 1;
+        for(int ch: neighbor[node]) if(!vis[ch]) par[solve(ch)] = node;
+        return node;
     }
 };
