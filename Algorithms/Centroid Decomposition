@@ -17,7 +17,7 @@ template<int SZ> struct centroidDecomp {
     void build() {
         M00(i, numNodes) vis[i] = 0, par[i] = -1;
         solve(0);
-        M00(i, numNodes) child[par[i]].PB(i);
+        M00(i, numNodes) if(par[i] != -1) child[par[i]].PB(i);
     }
     void getSizes(int node) {
         subsize[node] = 1;
