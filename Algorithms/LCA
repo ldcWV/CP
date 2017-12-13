@@ -1,6 +1,5 @@
 template<int SZ> struct tree {
     vector<pair<int, ll>> adj[SZ];
-    pair<int, ll> par[SZ];
     const static int LGSZ = 32-__builtin_clz(SZ-1);
     pair<int, ll> ppar[SZ][LGSZ];
     int depth[SZ];
@@ -13,16 +12,15 @@ template<int SZ> struct tree {
     void dfs(int u, int dep, ll dis) {
         depth[u] = dep;
         distfromroot[u] = dis;
-        for(auto& v: adj[u]) if(par[u].F != v.F) {
-            par[v.F] = MP(u, v.S);
+        for(auto& v: adj[u]) if(ppar[u][0].F != v.F) {
+            ppar[v.F][0] = MP(u, v.S);
             dfs(v.F, dep + 1, dis + v.S);
         }
     }
     void build() {
-        par[0] = MP(0, 0);
+        ppar[0][0] = MP(0, 0);
         M00(i, SZ) depth[i] = 0;
         dfs(0, 0, 0);
-        M00(i, SZ) ppar[i][0] = par[i];
         MOO(i, 1, LGSZ) M00(j, SZ) {
             ppar[j][i].F = ppar[ppar[j][i-1].F][i-1].F;
             ppar[j][i].S = ppar[j][i-1].S + ppar[ppar[j][i-1].F][i-1].S;
@@ -38,7 +36,7 @@ template<int SZ> struct tree {
                 v = ppar[v][i].F;
             }
         }
-        return par[u].F;
+        return ppar[u][0].F;
     }
     ll dist(int u, int v) {
         return distfromroot[u] + distfromroot[v] - 2*distfromroot[lca(u, v)];
