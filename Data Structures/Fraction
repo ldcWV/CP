@@ -1,0 +1,71 @@
+struct frac {
+    ll top;
+    ll bot;
+    int sign;
+    frac(ll a, ll b) {
+        this->top = abs(a);
+        this->bot = abs(b);
+        if(!(a < 0 && b < 0) && (a < 0 || b < 0)) {
+            this->sign = -1;
+        } else {
+            this->sign = 1;
+        }
+    }
+    void set(int a, int b) {
+        this->top = a;
+        this->bot = b;
+    }
+    ll gcd(ll a, ll b) {
+        if(b == 0) return a;
+        return gcd(b, a%b);
+    }
+    frac simp(frac a) {
+        if(a.isSimp()) return a;
+        ll k = gcd(abs(a.top), abs(a.bot));
+        return frac(a.top/k, a.bot/k) * frac(a.sign, 1);
+    }
+    bool isSimp() {
+        return (gcd(abs(this->top), abs(this->bot)) == 1);
+    }
+    frac operator+(const frac& other) {
+        frac ans = frac(this->top*other.bot + this->bot*other.top, this->bot*other.bot);
+        return simp(ans);
+    }
+    frac operator-(const frac& other) {
+        frac ans = frac(this->top*other.bot - this->bot*other.top, this->bot*other.bot);
+        return simp(ans);
+    }
+    frac operator*(const frac& other) {
+        frac ans = frac(this->sign * other.sign * this->top*other.top, this->bot*other.bot);
+        return simp(ans);
+    }
+    frac operator/(const frac& other) {
+        frac ans = frac(this->top*other.bot, this->bot*other.top);
+        return simp(ans);
+    }
+    bool operator==(const frac& other) {
+        return (this->top == other.top && this->bot == other.bot);
+    }
+    void operator=(const frac& other) {
+        this->top = other.top;
+        this->bot = other.bot;
+    }
+    bool operator>(const frac& other) {
+        return (this->top * other.bot * this->sign > other.top * this->bot * other.sign);
+    }
+    bool operator>=(const frac& other) {
+        return (this->top * other.bot * this->sign >= other.top * this->bot * other.sign);
+    }
+    bool operator<(const frac& other) {
+        return (this->top * other.bot * this->sign < other.top * this->bot * other.sign);
+    }
+    bool operator<=(const frac& other) {
+        return (this->top * other.bot * this->sign <= other.top * this->bot * other.sign);
+    }
+    string val() {
+        string ans = "";
+        if(this->sign == -1) ans += "-";
+        ans += to_string(this->top) + "/" + to_string(this->bot);
+        return ans;
+    }
+};
