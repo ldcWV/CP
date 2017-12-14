@@ -28,11 +28,11 @@ struct frac {
         return (gcd(abs(this->top), abs(this->bot)) == 1);
     }
     frac operator+(const frac& other) {
-        frac ans = frac(this->top*other.bot + this->bot*other.top, this->bot*other.bot);
+        frac ans = frac(this->sign * this->top*other.bot + other.sign * this->bot*other.top, this->bot*other.bot);
         return simp(ans);
     }
     frac operator-(const frac& other) {
-        frac ans = frac(this->top*other.bot - this->bot*other.top, this->bot*other.bot);
+        frac ans = frac(this->sign * this->top*other.bot - other.sign * this->bot*other.top, this->bot*other.bot);
         return simp(ans);
     }
     frac operator*(const frac& other) {
@@ -40,7 +40,7 @@ struct frac {
         return simp(ans);
     }
     frac operator/(const frac& other) {
-        frac ans = frac(this->top*other.bot, this->bot*other.top);
+        frac ans = frac(this->sign * this->top*other.bot, other.sign * this->bot*other.top);
         return simp(ans);
     }
     bool operator==(const frac& other) {
