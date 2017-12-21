@@ -1,0 +1,31 @@
+template<int SZ> struct cutNodes {
+    vi adj[SZ];
+    int depth[SZ];
+    int highest[SZ];
+    unordered_set<int> art;
+    void build() {
+        M00(i, SZ) depth[i] = -1;
+        M00(i, SZ) if(depth[i] == -1) dfs(i, i, 0);
+    }
+    void addEdge(int u, int v) {
+        adj[u].PB(v);
+        adj[v].PB(u);
+    }
+    bool dfs(int u, int p, int d) {
+        if(depth[u] != -1) {
+            highest[p] = min(highest[p], depth[u]);
+            return 0;
+        }
+        bool hasMult = 0;
+        depth[u] = d;
+        highest[u] = depth[u];
+        for(int v: adj[u]) if(v != p && dfs(v, u, d+1)) {
+            highest[u] = min(highest[u], highest[v]);
+            if(u == p) {
+                if(hasMult) art.insert(u);
+            } else if(highest[v] >= depth[u]) art.insert(u);
+            hasMult = 1;
+        }
+        return 1;
+    }
+};
