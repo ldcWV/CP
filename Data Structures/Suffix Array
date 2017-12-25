@@ -38,7 +38,4 @@ template<int SZ> struct suffixArray {
         }
         return ans;
     }
-    int ind(int a) {
-        return res[a];
-    }
 };
