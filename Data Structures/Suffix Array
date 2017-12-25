@@ -28,6 +28,7 @@ template<int SZ> struct suffixArray {
         M00(i, len) res[sortIndex[LGSZ-1][i]] = i;
     }
     int LCP(int x, int y) {
+        if(x == y) return len - x;
         int ans = 0;
         M00d(i, LGSZ) {
             if(sortIndex[i][x] == sortIndex[i][y]) {
