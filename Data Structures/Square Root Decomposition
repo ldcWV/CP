@@ -1,4 +1,4 @@
-template<int SZ> struct sqrtDecomp {
+struct sqrtDecomp {
     const static int blockSZ = 10; //change this
     int val[blockSZ*blockSZ];
     int lazy[blockSZ];
