@@ -1,0 +1,49 @@
+template<int SZ> struct matrix { //SZ should be max(N, M)
+    int mat[SZ][SZ];
+    int N, M;
+    matrix(int n, int m) { //identity
+        this->N = n; this->M = m;
+        M00(i, N) M00(j, M) {
+            if(i == j) mat[i][j] = 1;
+            else mat[i][j] = 0;
+        }
+    }
+    matrix operator*(const matrix& other) {
+        if(M != other.N) throw "Dimensions don't match up";
+        matrix<SZ> ans = matrix<SZ>(N, other.M);
+        M00(i, N) M00(j, other.M) {
+            ans.mat[i][j] = 0;
+            M00(k, M) ans.mat[i][j] += mat[i][k] * other.mat[k][j];
+        }
+        return ans;
+    }
+    matrix operator+(const matrix& other) {
+        if(N != other.N || M != other.M) throw "Dimensions don't match up";
+        matrix<SZ> ans = matrix<SZ>(N, other.M);
+        M00(i, N) M00(j, other.M) {
+            ans.mat[i][j] = mat[i][j] + other.mat[i][j];
+        }
+        return ans;
+    }
+    matrix operator^(int p) {
+        if(N != M) throw "Not a square matrix";
+        matrix<SZ> ans = matrix<SZ>(N, N);
+        matrix<SZ> temp = matrix<SZ>(N, M);
+        M00(i, N) M00(j, M) temp.mat[i][j] = mat[i][j];
+        while(p > 0) {
+            if(p % 2) ans = ans*temp;
+            temp = temp*temp;
+            p /= 2;
+        }
+        return ans;
+    }
+    void print() {
+        M00(i, N) {
+            M00(j, M) {
+                if(j != 0) cout << " ";
+                cout << mat[i][j];
+            }
+            cout << "\n";
+        }
+    }
+};
