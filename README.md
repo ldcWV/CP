@@ -45,13 +45,13 @@
 * December: 101
 * January: 110
 * February: 111
-* US Open: 111
+* US Open: 100
 
 ### 2016-2017
 * December: 110
 * January: 111
 * February: 111
-* US Open: 100
+* US Open: 111
 
 ### 2017-2018
 * December: 111
