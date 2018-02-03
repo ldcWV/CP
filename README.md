@@ -1,5 +1,5 @@
 # Progress (Gold)
-## 25/26 done
+## 25/29 done
 ### 2015-2016
 * December: 111
 * January: 111
@@ -14,6 +14,7 @@
 
 ### 2017-2018
 * December: 011
+* January: 000
 
 # Progress (Old Gold)
 ## 22/48 done
@@ -40,7 +41,7 @@
 * US Open: 010
 
 # Progress (Platinum)
-## 24/27 done
+## 26/30 done
 ### 2015-2016
 * December: 111
 * January: 110
@@ -55,3 +56,4 @@
 
 ### 2017-2018
 * December: 111
+* January: 101
