@@ -1,5 +1,5 @@
 # Progress (Gold)
-## 25/29 done
+## 26/29 done
 ### 2015-2016
 * December: 111
 * January: 111
@@ -14,7 +14,7 @@
 
 ### 2017-2018
 * December: 011
-* January: 000
+* January: 010
 
 # Progress (Old Gold)
 ## 22/48 done
