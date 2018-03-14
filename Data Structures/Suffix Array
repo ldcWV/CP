@@ -31,6 +31,7 @@ template<int SZ> struct suffixArray {
         if(x == y) return len - x;
         int ans = 0;
         M00d(i, LGSZ) {
+            if(x >= len || y >= len) break;
             if(sortIndex[i][x] == sortIndex[i][y]) {
                 x += (1<<i);
                 y += (1<<i);
