@@ -1,7 +1,6 @@
 struct maxQueue {
     queue<int> q;
     deque<int> dq;
-    maxQueue() {}
     void push(int v) {
         q.push(v);
         if(q.empty()) {dq.push_back(v); return;}
