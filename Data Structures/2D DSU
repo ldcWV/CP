@@ -1,43 +1,39 @@
-struct lel {
-    int sz;
-    pii par;
-    lel(int s, pii p) {
-        this->sz = s;
-        this->par = p;
-    }
-};
-
 template<int w, int h> struct DSU {
-    lel* e[w][h];
+    pair<int, pi> e[w][h];
     DSU() {
         M00(i, w) M00(j, h) {
-            e[i][j] = new lel(1, MP(i, j));
+            e[i][j] = MP(1, MP(i, j));
         }
     }
-    pii get(pii x) {
+    void clear() {
+        M00(i, w) M00(j, h) {
+            e[i][j] = MP(1, MP(i, j));
+        }
+    }
+    pi get(pi x) {
         int i = x.F;
         int j = x.S;
-        if(e[i][j]->par != MP(i, j)) {
-            e[i][j]->par = get(e[i][j]->par);
+        if(e[i][j].S != MP(i, j)) {
+            e[i][j].S = get(e[i][j].S);
         }
-        return e[i][j]->par;
+        return e[i][j].S;
     }
-    void unite(pii x, pii y) {
+    void unite(pi x, pi y) {
         x = get(x);
         y = get(y);
         if(x == y) return;
-        lel* xp = e[x.F][x.S];
-        lel* yp = e[y.F][y.S];
-        if(xp->sz < yp->sz) swap(xp, yp), swap(x, y);
-        xp->sz += yp->sz, yp->par = x;
+        pair<int, pi>& xp = e[x.F][x.S];
+        pair<int, pi>& yp = e[y.F][y.S];
+        if(xp.F < yp.F) swap(xp, yp), swap(x, y);
+        xp.F += yp.F, yp.S = x;
     }
-    bool connected(pii x, pii y) {
+    bool connected(pi x, pi y) {
         x = get(x);
         y = get(y);
         return (x == y);
     }
-    int s(pii x) { //size of component containing x
+    int s(pi x) { //size of component containing x
         x = get(x);
-        return e[x.F][x.S]->sz;
+        return e[x.F][x.S].F;
     }
 };
