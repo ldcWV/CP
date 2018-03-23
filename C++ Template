@@ -10,16 +10,17 @@
 #include <set>
 #include <stack>
 #include <map>
+#include <unordered_map>
 #include <unordered_set>
 #include <assert.h>
 
 using namespace std;
 
-#define f first
-#define s second
-#define pb push_back
-#define mp make_pair
-#define sq(a) (a)*(a)
+#define F first
+#define S second
+#define PB push_back
+#define MP make_pair
+#define SQ(a) (a)*(a)
 #define all(v) v.begin(), v.end()
 
 #define MOO(i, a, b) for (int i=a; i<b; i++)
@@ -28,6 +29,7 @@ using namespace std;
 #define M00d(i,a) for (int i = (a)-1; i >= 0; i--)
 
 #define FAST ios::sync_with_stdio(0); cin.tie(0);
+#define finish(x) return cout << x << '\n', 0;
 
 typedef long long ll;
 typedef long double ld;
