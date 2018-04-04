@@ -1,0 +1,17 @@
+- Graphs
+ - SCC
+ - topo sort
+ - dfs tree
+- Trees
+ - how to find diameter?
+ - euler tour
+ - HLD
+ - centroid decomp
+ - binary lifting
+- Array updates/queries
+ - Mo's algorithm
+ - Segment tree
+- DP
+ - how many distinct values for the states?
+ - how to optimize transitions?
+ - how many states need to be stored at once?
