@@ -1,0 +1,5 @@
+- works for n = 1?
+- are loop bounds correct? (n vs 26)
+- int overflow?
+- ll overflow?
+- printed the answer twice?
