@@ -1,0 +1,57 @@
+namespace FFT {
+    int getsz(int n) { // smallest i such that 2^i >= n
+        return n > 1 ? 32 - __builtin_clz(n - 1) : 0;
+    }
+    int rev(int s, int k) { // reverse bits
+        int res = 0;
+        M00(i, s) if(k&(1<<i)) res += (1<<(s-i-1));
+        return res;
+    }
+    vcd DFT(vcd& a) {
+        int n = (int)a.size(); int s = getsz(n);
+        vcd A(n); M00(i, n) A[rev(s, i)] = a[i];
+        
+        MOO(i, 1, s+1) {
+            int m = (1<<i);
+            cd wm = cd(cos(2*M_PI/m), sin(2*M_PI/m));
+            for(int j = 0; j < n; j += m) {
+                cd w = cd(1, 0);
+                M00(k, m/2) {
+                    cd t = w*A[j+k+m/2];
+                    cd u = A[j+k];
+                    A[j+k] = u+t;
+                    A[j+k+m/2] = u-t;
+                    w *= wm;
+                }
+            }
+        }
+        return A;
+    }
+    vcd iDFT(vcd& a) {
+        vcd A = DFT(a);
+        for(cd& c: A) c /= A.size();
+        reverse(A.begin()+1, A.end()); // replace w by w^(-1) so i goes to (-i)%n
+        return A;
+    }
+    vcd brute(vcd& a, vcd& b) {
+        vcd res((int)a.size()+(int)b.size()-1);
+        M00(i, (int)a.size()) M00(j, (int)b.size()) res[i+j] += a[i]*b[j];
+        return res;
+    }
+    vcd conv(vcd& a, vcd& b) {
+        int o = (int)a.size()+(int)b.size()-1; int s = getsz(o); int n = (1<<s);
+        if(o <= 200) return brute(a, b);
+        a.resize(n); b.resize(n); vcd A = DFT(a); vcd B = DFT(b);
+        vcd res = vcd(n);
+        M00(i, n) res[i] = A[i] * B[i];
+        res = iDFT(res); res.resize(o);
+        return res;
+    }
+    vector<ll> conv(vector<ll>& a, vector<ll>& b) {
+        vcd A; for(ll v: a) A.PB(cd(v, 0));
+        vcd B; for(ll v: b) B.PB(cd(v, 0));
+        vcd r = conv(A, B);
+        vector<ll> res; for(cd v: r) res.PB(round(v.real()));
+        return res;
+    }
+}
