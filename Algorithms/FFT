@@ -38,7 +38,7 @@ namespace FFT {
         M00(i, (int)a.size()) M00(j, (int)b.size()) res[i+j] += a[i]*b[j];
         return res;
     }
-    vcd conv(vcd& a, vcd& b) {
+    vcd conv(vcd a, vcd b) {
         int o = (int)a.size()+(int)b.size()-1; int s = getsz(o); int n = (1<<s);
         if(o <= 200) return brute(a, b);
         a.resize(n); b.resize(n); vcd A = DFT(a); vcd B = DFT(b);
@@ -47,7 +47,7 @@ namespace FFT {
         res = iDFT(res); res.resize(o);
         return res;
     }
-    vector<ll> conv(vector<ll>& a, vector<ll>& b) {
+    vector<ll> conv(vector<ll> a, vector<ll> b) {
         vcd A; for(ll v: a) A.PB(cd(v, 0));
         vcd B; for(ll v: b) B.PB(cd(v, 0));
         vcd r = conv(A, B);
