@@ -1,0 +1,55 @@
+namespace NTT {
+    ll c = 119, k = 23, P = (c << k) + 1, r = 3;
+    ll modpow(ll b, ll p) { return !p?1:modpow(b*b%P,p/2)*(p&1?b:1)%P; }
+    ll inv (ll b) { return modpow(b,P-2); }
+    
+    int getsz(int n) { // smallest i such that 2^i >= n
+        return n > 1 ? 32 - __builtin_clz(n - 1) : 0;
+    }
+    int rev(int s, int k) { // reverse bits
+        int res = 0;
+        M00(i, s) if(k&(1<<i)) res += (1<<(s-i-1));
+        return res;
+    }
+    vll DFT(vll& a) {
+        int n = (int)a.size(); int s = getsz(n);
+        vll A(n); M00(i, n) A[rev(s, i)] = a[i];
+        vll roots(n); roots[0] = 1; roots[1] = modpow(r, (P-1)/n); MOO(i, 1, n) roots[i] = roots[i-1]*roots[1] % P;
+        
+        MOO(i, 1, s+1) {
+            int m = (1<<i);
+            ll wm = roots[n/m];
+            for(int j = 0; j < n; j += m) {
+                ll w = 1;
+                M00(k, m/2) {
+                    ll t = w*A[j+k+m/2] % P;
+                    ll u = A[j+k];
+                    A[j+k] = (u+t)%P;
+                    A[j+k+m/2] = (((u-t)%P)+P)%P;
+                    w = w*wm%P;
+                }
+            }
+        }
+        return A;
+    }
+    vll iDFT(vll& a) {
+        vll A = DFT(a);
+        for(ll& c: A) c = c*inv((ll)A.size())%P;
+        reverse(A.begin()+1, A.end()); // replace w by w^(-1) so i goes to (-i)%n
+        return A;
+    }
+    vll brute(vll& a, vll& b) {
+        vll res((int)a.size()+(int)b.size()-1);
+        M00(i, (int)a.size()) M00(j, (int)b.size()) res[i+j] = (res[i+j]+a[i]*b[j]%P)%P;
+        return res;
+    }
+    vll conv(vll a, vll b) {
+        int o = (int)a.size()+(int)b.size()-1; int s = getsz(o); int n = (1<<s);
+        if(o <= 200) return brute(a, b);
+        a.resize(n); b.resize(n); vll A = DFT(a); vll B = DFT(b);
+        vll res = vll(n);
+        M00(i, n) res[i] = A[i] * B[i] % P;
+        res = iDFT(res); res.resize(o);
+        return res;
+    }
+}
