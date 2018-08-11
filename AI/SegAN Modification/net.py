@@ -299,32 +299,32 @@ class NetS(nn.Module):
 
             decoder1 = self.deconvblock1(encoder8)
             decoder1 = torch.cat([encoder7,decoder1],1)
-            decoder1 = F.upsample(decoder1, size = encoder6.size()[2:], mode='bilinear')
+            decoder1 = F.interpolate(decoder1, size = encoder6.size()[2:], mode='bilinear', align_corners=True)
             decoder2 = self.deconvblock2(decoder1)
             decoder2 = self.deconvblock2_1(decoder2) + decoder2
             # concatenate along depth dimension
             decoder2 = torch.cat([encoder6,decoder2],1)
-            decoder2 = F.upsample(decoder2, size = encoder5.size()[2:], mode='bilinear')
+            decoder2 = F.interpolate(decoder2, size = encoder5.size()[2:], mode='bilinear', align_corners=True)
             decoder3 = self.deconvblock3(decoder2)
             decoder3 = self.deconvblock3_1(decoder3)
             decoder3 = torch.cat([encoder5,decoder3],1)
-            decoder3 = F.upsample(decoder3, size = encoder4.size()[2:], mode='bilinear')
+            decoder3 = F.interpolate(decoder3, size = encoder4.size()[2:], mode='bilinear', align_corners=True)
             decoder4 = self.deconvblock4(decoder3)
             decoder4 = self.deconvblock4_1(decoder4)
             decoder4 = torch.cat([encoder4,decoder4],1)
-            decoder4 = F.upsample(decoder4, size = encoder3.size()[2:], mode='bilinear')
+            decoder4 = F.interpolate(decoder4, size = encoder3.size()[2:], mode='bilinear', align_corners=True)
             decoder5 = self.deconvblock5(decoder4)
             decoder5 = self.deconvblock5_1(decoder5)
             decoder5 = torch.cat([encoder3,decoder5],1)
-            decoder5 = F.upsample(decoder5, size = encoder2.size()[2:], mode='bilinear')
+            decoder5 = F.interpolate(decoder5, size = encoder2.size()[2:], mode='bilinear', align_corners=True)
             decoder6 = self.deconvblock6(decoder5)
             decoder6 = self.deconvblock6_1(decoder6)
             decoder6 = torch.cat([encoder2,decoder6],1)
-            decoder6 = F.upsample(decoder6, size = encoder1.size()[2:], mode='bilinear')
+            decoder6 = F.interpolate(decoder6, size = encoder1.size()[2:], mode='bilinear', align_corners=True)
             decoder7 = self.deconvblock7(decoder6)
             decoder7 = self.deconvblock7_1(decoder7)
             decoder7 = torch.cat([encoder1,decoder7],1)
-            decoder7 = F.upsample(decoder7, size = input.size()[2:], mode='bilinear')
+            decoder7 = F.interpolate(decoder7, size = input.size()[2:], mode='bilinear', align_corners=True)
             decoder8 = self.deconvblock8(decoder7)
             decoder8 = self.deconvblock8_1(decoder8)
             decoder9 = self.deconvblock9(decoder8)
@@ -339,23 +339,14 @@ class NetC(nn.Module):
     def __init__(self, ngpu):
         super(NetC, self).__init__()
         self.ngpu = ngpu
-        self.convblock1 = nn.Sequential(
-            # input is (channel_dim) x 128 x 128
-            nn.Conv2d(channel_dim, ndf, 7, 2, 3, bias=False),
-            nn.LeakyReLU(0.2, inplace=True),
-            # nn.Dropout2d(p=0.2),
-            # state size. (ndf) x 64 x 64
+        self.convblock11 = nn.Sequential(
+             # input is (channel_dim) x 128 x 128
+             nn.Conv2d(channel_dim, ndf, 7, 2, 3, bias=False),
+             nn.LeakyReLU(0.2, inplace=True),
+             # nn.Dropout2d(p=0.2),
+             # state size. (ndf) x 64 x 64
         )
-        self.convblock1_1 = nn.Sequential(
-            # state size. (ndf) x 64 x 64
-            GlobalConvBlock(ndf, ndf * 2, (13, 13)),
-            # nn.Conv2d(ndf, ndf * 2, 4, 2, 1, bias=False),
-            nn.BatchNorm2d(ndf * 2),
-            nn.LeakyReLU(0.2, inplace=True),
-            # nn.Dropout2d(p=0.2),
-            # state size. (ndf*2) x 64 x 64
-        )
-        self.convblock2 = nn.Sequential(
+        self.convblock21 = nn.Sequential(
             # state size. (ndf * 2) x 64 x 64
             nn.Conv2d(ndf * 1, ndf * 2, 5, 2, 2, bias=False),
             nn.BatchNorm2d(ndf * 2),
@@ -363,15 +354,7 @@ class NetC(nn.Module):
             # nn.Dropout2d(p=0.2),
             # state size. (ndf*2) x 32 x 32
         )
-        self.convblock2_1 = nn.Sequential(
-            # input is (ndf*2) x 32 x 32
-            GlobalConvBlock(ndf * 2, ndf * 4, (11, 11)),
-            nn.BatchNorm2d(ndf * 4),
-            nn.LeakyReLU(0.2, inplace=True),
-            # nn.Dropout2d(p=0.2),
-            # state size. (ndf*4) x 32 x 32
-        )
-        self.convblock3 = nn.Sequential(
+        self.convblock31 = nn.Sequential(
             # state size. (ndf * 4) x 32 x 32
             nn.Conv2d(ndf * 2, ndf * 4, 4, 2, 1, bias=False),
             nn.BatchNorm2d(ndf * 4),
@@ -379,15 +362,7 @@ class NetC(nn.Module):
             # nn.Dropout2d(p=0.2),
             # state size. (ndf*4) x 16 x 16
         )
-        self.convblock3_1 = nn.Sequential(
-            # input is (ndf*4) x 16 x 16
-            GlobalConvBlock(ndf * 4, ndf * 8, (9, 9)),
-            nn.BatchNorm2d(ndf * 8),
-            nn.LeakyReLU(0.2, inplace=True),
-            # nn.Dropout2d(p=0.2),
-            # state size. (ndf * 8) x 16 x 16
-        )
-        self.convblock4 = nn.Sequential(
+        self.convblock41 = nn.Sequential(
             # state size. (ndf*4) x 16 x 16
             nn.Conv2d(ndf * 4, ndf * 8, 4, 2, 1, bias=False),
             nn.BatchNorm2d(ndf * 8),
@@ -395,15 +370,7 @@ class NetC(nn.Module):
             # nn.Dropout2d(p=0.2),
             # state size. (ndf*8) x 8 x 8
         )
-        self.convblock4_1 = nn.Sequential(
-            # input is (ndf*8) x 8 x 8
-            GlobalConvBlock(ndf * 8, ndf * 16, (7, 7)),
-            nn.BatchNorm2d(ndf * 16),
-            nn.LeakyReLU(0.2, inplace=True),
-            # nn.Dropout2d(p=0.2),
-            # state size. (ndf*16) x 8 x 8
-        )
-        self.convblock5 = nn.Sequential(
+        self.convblock51 = nn.Sequential(
             # state size. (ndf*8) x 8 x 8
             nn.Conv2d(ndf * 8, ndf * 8, 4, 2, 1, bias=False),
             nn.BatchNorm2d(ndf * 8),
@@ -411,15 +378,7 @@ class NetC(nn.Module):
             # nn.Dropout2d(p=0.2),
             # state size. (ndf*16) x 4 x 4
         )
-        self.convblock5_1 = nn.Sequential(
-            # input is (ndf*16) x 4 x 4
-            nn.Conv2d(ndf * 16, ndf * 32, 3, 1, 1, bias=False),
-            nn.BatchNorm2d(ndf * 32),
-            nn.LeakyReLU(0.2, inplace=True),
-            # nn.Dropout2d(p=0.2),
-            # state size. (ndf*32) x 4 x 4
-        )
-        self.convblock6 = nn.Sequential(
+        self.convblock61 = nn.Sequential(
             # state size. (ndf*32) x 4 x 4
             nn.Conv2d(ndf * 8, ndf * 8, 3, 2, 1, bias=False),
             nn.BatchNorm2d(ndf * 8),
@@ -427,6 +386,127 @@ class NetC(nn.Module):
             # nn.Dropout2d(p=0.2),
             # state size. (ndf*32) x 2 x 2
         )
+         
+        self.convblock12 = nn.Sequential(
+            # input is (channel_dim) x 128 x 128
+            nn.Conv2d(channel_dim, ndf, 7, 2, 3, bias=False),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf) x 64 x 64
+        )
+        self.convblock22 = nn.Sequential(
+            # state size. (ndf * 2) x 64 x 64
+            nn.Conv2d(ndf * 1, ndf * 2, 5, 2, 2, bias=False),
+            nn.BatchNorm2d(ndf * 2),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf*2) x 32 x 32
+        )
+        self.convblock32 = nn.Sequential(
+            # state size. (ndf * 4) x 32 x 32
+            nn.Conv2d(ndf * 2, ndf * 4, 4, 2, 1, bias=False),
+            nn.BatchNorm2d(ndf * 4),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf*4) x 16 x 16
+        )
+        self.convblock42 = nn.Sequential(
+            # state size. (ndf*4) x 16 x 16
+            nn.Conv2d(ndf * 4, ndf * 8, 4, 2, 1, bias=False),
+            nn.BatchNorm2d(ndf * 8),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf*8) x 8 x 8
+        )
+        self.convblock52 = nn.Sequential(
+            # state size. (ndf*8) x 8 x 8
+            nn.Conv2d(ndf * 8, ndf * 8, 4, 2, 1, bias=False),
+            nn.BatchNorm2d(ndf * 8),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf*16) x 4 x 4
+        )
+         
+        self.convblock13 = nn.Sequential(
+            # input is (channel_dim) x 128 x 128
+            nn.Conv2d(channel_dim, ndf, 7, 2, 3, bias=False),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf) x 64 x 64
+        )
+        self.convblock23 = nn.Sequential(
+            # state size. (ndf * 2) x 64 x 64
+            nn.Conv2d(ndf * 1, ndf * 2, 5, 2, 2, bias=False),
+            nn.BatchNorm2d(ndf * 2),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf*2) x 32 x 32
+        )
+        self.convblock33 = nn.Sequential(
+            # state size. (ndf * 4) x 32 x 32
+            nn.Conv2d(ndf * 2, ndf * 4, 4, 2, 1, bias=False),
+            nn.BatchNorm2d(ndf * 4),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf*4) x 16 x 16
+        )
+        self.convblock43 = nn.Sequential(
+            # state size. (ndf*4) x 16 x 16
+            nn.Conv2d(ndf * 4, ndf * 8, 4, 2, 1, bias=False),
+            nn.BatchNorm2d(ndf * 8),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf*8) x 8 x 8
+        )
+         
+        self.convblock14 = nn.Sequential(
+            # input is (channel_dim) x 128 x 128
+            nn.Conv2d(channel_dim, ndf, 7, 2, 3, bias=False),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf) x 64 x 64
+        )
+        self.convblock24 = nn.Sequential(
+            # state size. (ndf * 2) x 64 x 64
+            nn.Conv2d(ndf * 1, ndf * 2, 5, 2, 2, bias=False),
+            nn.BatchNorm2d(ndf * 2),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf*2) x 32 x 32
+        )
+        self.convblock34 = nn.Sequential(
+            # state size. (ndf * 4) x 32 x 32
+            nn.Conv2d(ndf * 2, ndf * 4, 4, 2, 1, bias=False),
+            nn.BatchNorm2d(ndf * 4),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf*4) x 16 x 16
+        )
+         
+        self.convblock15 = nn.Sequential(
+            # input is (channel_dim) x 128 x 128
+            nn.Conv2d(channel_dim, ndf, 7, 2, 3, bias=False),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf) x 64 x 64
+        )
+        self.convblock25 = nn.Sequential(
+            # state size. (ndf * 2) x 64 x 64
+            nn.Conv2d(ndf * 1, ndf * 2, 5, 2, 2, bias=False),
+            nn.BatchNorm2d(ndf * 2),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf*2) x 32 x 32
+        )
+         
+        self.convblock16 = nn.Sequential(
+            # input is (channel_dim) x 128 x 128
+            nn.Conv2d(channel_dim, ndf, 7, 2, 3, bias=False),
+            nn.LeakyReLU(0.2, inplace=True),
+            # nn.Dropout2d(p=0.2),
+            # state size. (ndf) x 64 x 64
+        )
+                                         
         # self._initialize_weights()
         for m in self.modules():
             if isinstance(m, nn.Conv2d):
@@ -434,30 +514,48 @@ class NetC(nn.Module):
                 m.weight.data.normal_(0, sqrt(2. / n))
                 if m.bias is not None:
                     m.bias.data.zero_()
-            elif isinstance(m, nn.BatchNorm2d):
-                m.weight.data.normal_(1.0, 0.02)
-                m.bias.data.zero_()
+                elif isinstance(m, nn.BatchNorm2d):
+                    m.weight.data.normal_(1.0, 0.02)
+                    m.bias.data.zero_()
 
     def forward(self, input):
         if isinstance(input.data, torch.cuda.FloatTensor) and self.ngpu is 1:
             batchsize = input.size()[0]
-            out1 = self.convblock1(input)
-            # out1 = self.convblock1_1(out1)
-            out2 = self.convblock2(out1)
-            # out2 = self.convblock2_1(out2)
-            out3 = self.convblock3(out2)
-            # out3 = self.convblock3_1(out3)
-            out4 = self.convblock4(out3)
-            # out4 = self.convblock4_1(out4)
-            out5 = self.convblock5(out4)
-            # out5 = self.convblock5_1(out5)
-            out6 = self.convblock6(out5)
-            # out6 = self.convblock6_1(out6) + out6
-            output = torch.cat((input.view(batchsize,-1),1*out1.view(batchsize,-1),
-                                2*out2.view(batchsize,-1),2*out3.view(batchsize,-1),
-                                2*out4.view(batchsize,-1),2*out5.view(batchsize,-1),
-                                4*out6.view(batchsize,-1)),1)
+            out11 = self.convblock11(input)
+            out21 = self.convblock21(out11)
+            out31 = self.convblock31(out21)
+            out41 = self.convblock41(out31)
+            out51 = self.convblock51(out41)
+            out61 = self.convblock61(out51)
+	
+            out12 = self.convblock12(input)
+            out22 = self.convblock22(out12)
+            out32 = self.convblock32(out22)
+            out42 = self.convblock42(out32)
+            out52 = self.convblock52(out42)
+	
+            out13 = self.convblock13(input)
+            out23 = self.convblock23(out13)
+            out33 = self.convblock33(out23)
+            out43 = self.convblock43(out33)
+	
+            out14 = self.convblock14(input)
+            out24 = self.convblock24(out14)
+            out34 = self.convblock34(out24)
+	
+            out15 = self.convblock15(input)
+            out25 = self.convblock25(out15)
+	
+            out16 = self.convblock16(input)
+	
+            output = torch.cat((out61.view(batchsize,-1),
+                     out52.view(batchsize,-1),
+                    out43.view(batchsize,-1),
+                    out34.view(batchsize,-1),
+                    out25.view(batchsize,-1),
+                    out16.view(batchsize,-1),
+                    input.view(batchsize, -1)), 1)
         else:
             print('For now we only support one GPU')
-
+	
         return output
