@@ -1,0 +1,27 @@
+template<class T, int SZ> struct segtree {
+    T tree[2*SZ+1], identity = 0;
+    segtree() {
+        M00(i, 2*SZ+1) tree[i] = identity;
+    }
+    T comb(T a, T b) {
+        return a+b; // can change this
+    }
+    void upd(int pos, T val) {
+        pos += SZ+1;
+        tree[pos] = val; // update leaf
+        for(pos >>= 1; pos >= 1; pos >>= 1) {
+            tree[pos] = comb(tree[2*pos], tree[2*pos+1]);
+        }
+    }
+    T query(int l, int r) {
+        l += SZ+1;
+        r += SZ+1;
+        T res = identity;
+        while(l <= r) {
+            if(l&1) res = comb(res, tree[l++]);
+            if(!(r&1)) res = comb(res, tree[r--]);
+            l >>= 1; r >>= 1;
+        }
+        return res;
+    }
+};
