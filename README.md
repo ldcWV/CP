@@ -1,5 +1,5 @@
 # Progress (Platinum)
-## 27/36 done
+## 27/39 done
 ### 2015-2016
 * December: 111
 * January: 110
@@ -14,6 +14,9 @@
 
 ### 2017-2018
 * December: 111
-* January: 111
+* January: 101
 * February: 000
 * US Open: 000
+
+### 2018-2019
+* December: 001
