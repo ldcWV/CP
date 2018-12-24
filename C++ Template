@@ -13,6 +13,7 @@
 #include <unordered_map>
 #include <unordered_set>
 #include <assert.h>
+#include <sstream>
 
 using namespace std;
 
@@ -22,6 +23,7 @@ using namespace std;
 #define MP make_pair
 #define SQ(a) (a)*(a)
 #define all(v) v.begin(), v.end()
+#define sz(v) (int)v.size()
 
 #define MOO(i, a, b) for (int i=a; i<b; i++)
 #define M00(i, a) for (int i=0; i<a; i++)
