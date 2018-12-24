@@ -12,13 +12,22 @@ template <class T> using Tree = tree<T, null_type, less<T>, rb_tree_tag,tree_ord
 #define PB push_back
 #define MP make_pair
 #define SQ(a) (a)*(a)
-#define PMOD(a, b) (((a)+(b))%(b))
+#define all(v) v.begin(), v.end()
+#define sz(v) (int)v.size()
 
 #define MOO(i, a, b) for (int i=a; i<b; i++)
 #define M00(i, a) for (int i=0; i<a; i++)
 #define MOOd(i,a,b) for (int i = (b)-1; i >= a; i--)
 #define M00d(i,a) for (int i = (a)-1; i >= 0; i--)
 
+#define FAST ios::sync_with_stdio(0); cin.tie(0);
+#define finish(x) return cout << x << '\n', 0;
+
 typedef long long ll;
+typedef long double ld;
 typedef vector<int> vi;
 typedef pair<int,int> pi;
+
+int main() { FAST
+    
+}
