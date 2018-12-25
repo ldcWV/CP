@@ -15,7 +15,7 @@
 ### 2017-2018
 * December: 111
 * January: 101
-* February: 100
+* February: 110
 * US Open: 000
 
 ### 2018-2019
