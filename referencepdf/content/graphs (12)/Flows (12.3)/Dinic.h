@@ -22,11 +22,11 @@ template<int SZ> struct Dinic {
 	int level[SZ];
 	bool bfs() { // level = shortest distance from source
 		// after computing flow, edges {u,v} such that level[u] \neq -1, level[v] = -1 are part of min cut
-		F0R(i,N) level[i] = -1, cur[i] = begin(adj[i]);
+		M00(i,N) level[i] = -1, cur[i] = begin(adj[i]);
 		queue<int> q({s}); level[s] = 0; 
 		while (sz(q)) {
 			int u = q.front(); q.pop();
-			trav(e,adj[u]) if (level[e.to] < 0 && e.flow < e.cap) 
+            for(Edge e: adj[u]) if (level[e.to] < 0 && e.flow < e.cap)
 				q.push(e.to), level[e.to] = level[u]+1;
 		}
 		return level[t] >= 0;
