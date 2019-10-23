@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  22 OCT 2019 15:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  23 OCT 2019 16:11
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -660,11 +660,11 @@ Chapter 2.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.48 C
-      ircumradius: $R=\dfrac{abc}{4A}$\\ [1
+l.42 \section
+             {Geometry} [1
 
 ]
-<content/math/sphericalCoordinates.pdf, id=176, 42.67899pt x 42.67899pt>
+<content/math/sphericalCoordinates.pdf, id=185, 42.67899pt x 42.67899pt>
 File: content/math/sphericalCoordinates.pdf Graphic file (type pdf)
 <use content/math/sphericalCoordinates.pdf>
 Package pdftex.def Info: content/math/sphericalCoordinates.pdf  used on input line 66.
@@ -1236,18 +1236,18 @@ Package rerunfilecheck Info: File `kactl.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 16262 strings out of 492616
- 232201 string characters out of 6129482
+ 16271 strings out of 492616
+ 232502 string characters out of 6129482
  1371730 words of memory out of 5000000
  16450 multiletter control sequences out of 15000+600000
  11283 words of font info for 44 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,12n,60p,861b,2132s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on build//kactl.pdf (22 pages, 1624017 bytes).
+Output written on build//kactl.pdf (22 pages, 1624363 bytes).
 PDF statistics:
- 4348 PDF objects out of 5155 (max. 8388607)
- 4207 compressed objects within 43 object streams
- 3280 named destinations out of 3580 (max. 500000)
+ 4359 PDF objects out of 5155 (max. 8388607)
+ 4218 compressed objects within 43 object streams
+ 3289 named destinations out of 3580 (max. 500000)
  83 words of extra memory for PDF output out of 10000 (max. 10000000)
 
