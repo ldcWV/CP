@@ -1,13 +1,3 @@
-set nocompatible
-set backspace=indent,eol,start
+set nocp backspace=indent,eol,start nu ru si ts=4 sw=4 is hls sm mouse=a
 syntax on
 filetype plugin indent on
-set number
-set ruler
-set smartindent
-set tabstop=4
-set shiftwidth=4
-set incsearch
-set hlsearch
-set showmatch
-set mouse=a
