@@ -1,4 +1,3 @@
-function run() {
-    g++ -std=c++11 "$1".cpp -o "$1" &&
-    ./"$1"
+run() {
+    g++ -std=c++11 $1.cpp -o $1 && ./$1
 }
