@@ -6,6 +6,7 @@ using namespace std;
 #define s second
 #define pb push_back
 #define mp make_pair
+#define sq(a) (a)*(a)
 #define all(v) v.begin(), v.end()
 #define sz(v) (int)v.size()
 

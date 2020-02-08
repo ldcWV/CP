@@ -1,4 +1,4 @@
-set nocp backspace=indent,eol,start nu ru si ts=4 sw=4 is hls sm mouse=a
-syntax on
-filetype plugin indent on
-colorscheme slate
+set cin aw ai is ts=4 sw=4 tm=50 nu noeb ru cul
+sy on | im jk <esc> | im kj <esc> 
+set mouse=a
+set ww+=<,>,[,]
