@@ -92,6 +92,7 @@
 \contentsline {chapter}{\numberline {7}Graphs}{11}{chapter.7}% 
 \ttl@stoptoc {chapters@6}
 \ttl@starttoc {chapters@7}
+<<<<<<< HEAD
 \contentsline {section}{\numberline {7.1}Fundamentals}{11}{section.7.1}% 
 \contentsline {subsection}{\texttt {DSU (7.6).h}\hspace {0.2em}}{11}{section.7.1}% 
 \contentsline {subsection}{\texttt {ManhattanMST.h}\hspace {0.2em}}{11}{lstnumber.7.1.13}% 
@@ -121,6 +122,37 @@
 \contentsline {subsection}{\texttt {DominatorTree.h}\hspace {0.2em}}{16}{lstnumber.7.20.64}% 
 \contentsline {subsection}{\texttt {EdgeColor.h}\hspace {0.2em}}{16}{lstnumber.7.21.46}% 
 \contentsline {chapter}{\numberline {8}Geometry}{16}{chapter.8}% 
+=======
+\contentsline {section}{\numberline {7.1}Fundamentals}{14}{section.7.1}% 
+\contentsline {subsection}{\texttt {DSU (7.6).h}\hspace {0.2em}}{14}{section.7.1}% 
+\contentsline {subsection}{\texttt {ManhattanMST.h}\hspace {0.2em}}{14}{lstnumber.7.1.29}% 
+\contentsline {subsection}{\texttt {Dijkstra.h}\hspace {0.2em}}{15}{lstnumber.7.2.60}% 
+\contentsline {subsection}{\texttt {DijkstraV2.h}\hspace {0.2em}}{15}{lstnumber.7.3.31}% 
+\contentsline {section}{\numberline {7.2}Trees}{15}{section.7.2}% 
+\contentsline {subsection}{\texttt {LCAjumps (10.2).h}\hspace {0.2em}}{15}{section.7.2}% 
+\contentsline {subsection}{\texttt {CentroidDecomp (10.3).h}\hspace {0.2em}}{15}{lstnumber.7.5.44}% 
+\contentsline {subsection}{\texttt {HLD (10.3).h}\hspace {0.2em}}{16}{lstnumber.7.6.45}% 
+\contentsline {section}{\numberline {7.3}DFS Algorithms}{16}{section.7.3}% 
+\contentsline {subsection}{\texttt {SCC (12.1).h}\hspace {0.2em}}{16}{section.7.3}% 
+\contentsline {subsection}{\texttt {2SAT (12.1).h}\hspace {0.2em}}{16}{lstnumber.7.8.24}% 
+\contentsline {subsection}{\texttt {EulerPath (12.2).h}\hspace {0.2em}}{16}{lstnumber.7.9.38}% 
+\contentsline {subsection}{\texttt {BCC (12.4).h}\hspace {0.2em}}{16}{lstnumber.7.10.30}% 
+\contentsline {section}{\numberline {7.4}Flows}{17}{section.7.4}% 
+\contentsline {subsection}{\texttt {Dinic.h}\hspace {0.2em}}{17}{section.7.4}% 
+\contentsline {subsection}{\texttt {MCMF.h}\hspace {0.2em}}{17}{lstnumber.7.12.45}% 
+\contentsline {subsection}{\texttt {GomoryHu.h}\hspace {0.2em}}{17}{lstnumber.7.13.53}% 
+\contentsline {section}{\numberline {7.5}Matching}{18}{section.7.5}% 
+\contentsline {subsection}{\texttt {DFSmatch.h}\hspace {0.2em}}{18}{section.7.5}% 
+\contentsline {subsection}{\texttt {Hungarian.h}\hspace {0.2em}}{18}{lstnumber.7.15.26}% 
+\contentsline {subsection}{\texttt {UnweightedMatch.h}\hspace {0.2em}}{18}{lstnumber.7.16.28}% 
+\contentsline {section}{\numberline {7.6}Misc}{19}{section.7.6}% 
+\contentsline {subsection}{\texttt {MaximalCliques.h}\hspace {0.2em}}{19}{section.7.6}% 
+\contentsline {subsection}{\texttt {LCT.h}\hspace {0.2em}}{19}{lstnumber.7.18.19}% 
+\contentsline {subsection}{\texttt {DirectedMST.h}\hspace {0.2em}}{19}{lstnumber.7.19.96}% 
+\contentsline {subsection}{\texttt {DominatorTree.h}\hspace {0.2em}}{20}{lstnumber.7.20.64}% 
+\contentsline {subsection}{\texttt {EdgeColor.h}\hspace {0.2em}}{20}{lstnumber.7.21.46}% 
+\contentsline {chapter}{\numberline {8}Geometry}{21}{chapter.8}% 
+>>>>>>> parent of bfd1d1b... fixed maximal cliques
 \ttl@stoptoc {chapters@7}
 \ttl@starttoc {chapters@8}
 \contentsline {section}{\numberline {8.1}Primitives}{16}{section.8.1}% 

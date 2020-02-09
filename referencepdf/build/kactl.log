@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  7 FEB 2020 23:36
+=======
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  25 OCT 2019 23:33
+>>>>>>> parent of bfd1d1b... fixed maximal cliques
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -1241,18 +1245,34 @@ Package rerunfilecheck Info: File `kactl.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
+<<<<<<< HEAD
  16306 strings out of 492616
  232899 string characters out of 6129482
  1348730 words of memory out of 5000000
  16464 multiletter control sequences out of 15000+600000
  11283 words of font info for 44 fonts, out of 8000000 for 9000
+=======
+ 16658 strings out of 492616
+ 238503 string characters out of 6129482
+ 1253388 words of memory out of 5000000
+ 16497 multiletter control sequences out of 15000+600000
+ 10984 words of font info for 43 fonts, out of 8000000 for 9000
+>>>>>>> parent of bfd1d1b... fixed maximal cliques
  1141 hyphenation exceptions out of 8191
  44i,12n,60p,861b,2184s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/symbols/msbm7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
+<<<<<<< HEAD
 Output written on build//kactl.pdf (22 pages, 1625242 bytes).
 PDF statistics:
  4381 PDF objects out of 5155 (max. 8388607)
  4240 compressed objects within 43 object streams
  3308 named destinations out of 3580 (max. 500000)
+=======
+Output written on build//kactl.pdf (28 pages, 1640193 bytes).
+PDF statistics:
+ 4760 PDF objects out of 5155 (max. 8388607)
+ 4609 compressed objects within 47 object streams
+ 3605 named destinations out of 4296 (max. 500000)
+>>>>>>> parent of bfd1d1b... fixed maximal cliques
  83 words of extra memory for PDF output out of 10000 (max. 10000000)
 
