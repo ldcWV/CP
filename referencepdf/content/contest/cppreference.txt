@@ -1,0 +1,7 @@
+atan(m) -> angle from -pi/2 to pi/2
+atan2(y,x) -> angle from -pi to pi
+acos(x) -> angle from 0 to pi
+asin(y) -> angle from -pi/2 to pi/2
+
+lower_bound -> first element >= val
+upper_bound -> first element > val
