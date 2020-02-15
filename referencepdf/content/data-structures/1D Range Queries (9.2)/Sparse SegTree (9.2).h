@@ -4,19 +4,6 @@
  * Verification: ~
  */ 
 
-template<class T> struct node {
-    T val;
-    int l, r;
-    node* left;
-    node* right;
-    node(int l, int r) {
-        this -> l = l;
-        this -> r = r;
-        this -> left = nullptr;
-        this -> right = nullptr;
-    }
-};
-
 template<class T, int SZ> struct segtree{
     node<T>* root;
     T identity = asdf(9001, "a"); //[comb(identity, other) = comb(other, identity) = other] or this won't work

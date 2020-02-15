@@ -5,36 +5,47 @@
  * Verification: Debug the Bugs
  */
 
-template<int SZ> struct LCA {
-	static const int BITS = 32-__builtin_clz(SZ);
-	int N, R = 1; // vertices from 1 to N, R = root
-	vi adj[SZ];
-	int par[BITS][SZ], depth[SZ];
-
-	// INITIALIZE
-	void addEdge(int u, int v) { adj[u].pb(v), adj[v].pb(u); }
-	void dfs(int u, int prev){
-		par[0][u] = prev;
-		depth[u] = depth[prev]+1;
-		trav(v,adj[u]) if (v != prev) dfs(v, u);
-	}
-	void init(int _N) {
-		N = _N; dfs(R, 0);
-		FOR(k,1,BITS) FOR(i,1,N+1) par[k][i] = par[k-1][par[k-1][i]];
-	}
-
-	// QUERY
-	int getPar(int a, int b) {
-		R0F(k,BITS) if (b&(1<<k)) a = par[k][a];
-		return a;
-	}
-	int lca(int u, int v){
-		if (depth[u] < depth[v]) swap(u,v);
-		u = getPar(u,depth[u]-depth[v]);
-		R0F(k,BITS) if (par[k][u] != par[k][v]) u = par[k][u], v = par[k][v];
-		return u == v ? u : par[0][u];
-	}
-	int dist(int u, int v) {
-		return depth[u]+depth[v]-2*depth[lca(u,v)];
-	}
+template<int SZ> struct tree {
+    vector<pair<int, ll>> adj[SZ];
+    const static int LGSZ = 32-__builtin_clz(SZ-1);
+    pair<int, ll> ppar[SZ][LGSZ];
+    int depth[SZ];
+    ll distfromroot[SZ];
+    
+    void addEdge(int u, int v, int d) {
+        adj[u].PB(MP(v, d));
+        adj[v].PB(MP(u, d));
+    }
+    void dfs(int u, int dep, ll dis) {
+        depth[u] = dep;
+        distfromroot[u] = dis;
+        for(auto& v: adj[u]) if(ppar[u][0].F != v.F) {
+            ppar[v.F][0] = MP(u, v.S);
+            dfs(v.F, dep + 1, dis + v.S);
+        }
+    }
+    void build() {
+        ppar[0][0] = MP(0, 0);
+        M00(i, SZ) depth[i] = 0;
+        dfs(0, 0, 0);
+        MOO(i, 1, LGSZ) M00(j, SZ) {
+            ppar[j][i].F = ppar[ppar[j][i-1].F][i-1].F;
+            ppar[j][i].S = ppar[j][i-1].S + ppar[ppar[j][i-1].F][i-1].S;
+        }
+    }
+    int lca(int u, int v) {
+        if(depth[u] < depth[v]) swap(u, v);
+        M00d(i, LGSZ) if(depth[ppar[u][i].F] >= depth[v]) u = ppar[u][i].F;
+        if(u == v) return u;
+        M00d(i, LGSZ) {
+            if(ppar[u][i].F != ppar[v][i].F) {
+                u = ppar[u][i].F;
+                v = ppar[v][i].F;
+            }
+        }
+        return ppar[u][0].F;
+    }
+    ll dist(int u, int v) {
+        return distfromroot[u] + distfromroot[v] - 2*distfromroot[lca(u, v)];
+    }
 };

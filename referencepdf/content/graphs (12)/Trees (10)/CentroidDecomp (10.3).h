@@ -7,48 +7,50 @@
 	* Triway Cup 2019 G
  */
 
-template<int SZ> struct CD {
-	vi adj[SZ];
-	bool done[SZ];
-	int sub[SZ], par[SZ];
-	vl dist[SZ];
-	pi cen[SZ];
-	void addEdge(int a, int b) { adj[a].pb(b), adj[b].pb(a); }
-
-	void dfs (int x) {
-		sub[x] = 1;
-		trav(y,adj[x]) if (!done[y] && y != par[x]) {
-			par[y] = x; dfs(y);
-			sub[x] += sub[y];
-		}
-	}
-	int centroid(int x) {
-		par[x] = -1; dfs(x); 
-		for (int sz = sub[x];;) {
-			pi mx = {0,0};
-			trav(y,adj[x]) if (!done[y] && y != par[x]) 
-				ckmax(mx,{sub[y],y});
-			if (mx.f*2 <= sz) return x; 
-			x = mx.s;
-		}
-	}
-
-	void genDist(int x, int p) {
-		dist[x].pb(dist[p].back()+1);
-		trav(y,adj[x]) if (!done[y] && y != p) {
-			cen[y] = cen[x];
-			genDist(y,x);
-		}
-	}
-	void gen(int x, bool fst = 0) {
-		done[x = centroid(x)] = 1; dist[x].pb(0); 
-		if (fst) cen[x].f = -1;
-		int co = 0;
-		trav(y,adj[x]) if (!done[y]) {
-			cen[y] = {x,co++}; 
-			genDist(y,x);
-		}
-		trav(y,adj[x]) if (!done[y]) gen(y);
-	}
-	void init() { gen(1,1); }
+template<int SZ> struct centroidDecomp {
+    vi neighbor[SZ];
+    int subsize[SZ];
+    bool vis[SZ];
+    int p[SZ];
+    int par[SZ];
+    vi child[SZ];
+    int numNodes;
+    
+    centroidDecomp(int num) {
+        this->numNodes = num;
+    }
+    void addEdge(int u, int v) {
+        neighbor[u].PB(v);
+        neighbor[v].PB(u);
+    }
+    void build() {
+        M00(i, numNodes) vis[i] = 0, par[i] = -1;
+        solve(0);
+        M00(i, numNodes) if(par[i] != -1) child[par[i]].PB(i);
+    }
+    void getSizes(int node) {
+        subsize[node] = 1;
+        for(int ch: neighbor[node]) if(!vis[ch] && ch != p[node]) {
+            p[ch] = node;
+            getSizes(ch);
+            subsize[node] += subsize[ch];
+        }
+    }
+    int getCentroid(int root) {
+        p[root] = -1;
+        getSizes(root);
+        int cur = root;
+        while(1) {
+            pi hi = MP(subsize[root]-subsize[cur], cur);
+            for(int v: neighbor[cur]) if(!vis[v] && v != p[cur]) hi = max(hi, MP(subsize[v], v));
+            if(hi.F <= subsize[root]/2) return cur;
+            cur = hi.S;
+        }
+    }
+    int solve(int node) {
+        node = getCentroid(node);
+        vis[node] = 1;
+        for(int ch: neighbor[node]) if(!vis[ch]) par[solve(ch)] = node;
+        return node;
+    }
 };
