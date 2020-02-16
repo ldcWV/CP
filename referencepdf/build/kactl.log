@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  15 FEB 2020 18:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  16 FEB 2020 10:25
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -757,10 +757,15 @@ runsystem(python2 content/tex/preprocessor.py -i "content/data-structures/1D Ran
  (./build/kactl.tmp)
 runsystem(rm -f build/kactl.tmp)...executed.
 
+runsystem(python2 content/tex/preprocessor.py -i "content/data-structures/1D Range Queries (9.2)/MaxQueue.h" -o build/kactl.tmp )...executed.
+
+ (./build/kactl.tmp)
+runsystem(rm -f build/kactl.tmp)...executed.
+
 runsystem(python2 content/tex/preprocessor.py -i "content/data-structures/2D Range Queries (15.2)/2D Sumtree.h" -o build/kactl.tmp )...executed.
 
  (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "|2D Sumtree.h" -o build/header2.tmp)...executed.
+runsystem(python2 content/tex/preprocessor.py --print-header "2D Sumtree.h|2D Sumtree.h" -o build/header2.tmp)...executed.
 
  (./build/header2.tmp) [5])) (./content/number-theory (11.1)/chapter.tex
 Chapter 3.
@@ -783,15 +788,15 @@ runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/number-theory (11.1)/Modular Arithmetic/ModSqrt.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp)
+ (./build/kactl.tmp
+runsystem(python2 content/tex/preprocessor.py --print-header "ModSqrt.h|ModSqrt.h" -o build/header2.tmp)...executed.
+
+ (./build/header2.tmp) [6])
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/number-theory (11.1)/Modular Arithmetic/ModSum.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "ModSum.h|ModSum.h" -o build/header2.tmp)...executed.
-
- (./build/header2.tmp) [6])
+ (./build/kactl.tmp)
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/number-theory (11.1)/Primality/PrimeSieve.h" -o build/kactl.tmp )...executed.
@@ -854,10 +859,10 @@ runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/numerical/Polynomials/VecOp.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp)
+ (./build/kactl.tmp
 runsystem(python2 content/tex/preprocessor.py --print-header "|VecOp.h" -o build/header2.tmp)...executed.
 
- (./build/header2.tmp) [9]
+ (./build/header2.tmp) [9])
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/numerical/Polynomials/PolyRoots.h" -o build/kactl.tmp )...executed.
@@ -889,15 +894,15 @@ runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/numerical/Polynomials/PolyInv.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp)
+ (./build/kactl.tmp
+runsystem(python2 content/tex/preprocessor.py --print-header "PolyInv.h|PolyInv.h" -o build/header2.tmp)...executed.
+
+ (./build/header2.tmp) [10])
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/numerical/Polynomials/PolyDiv.h" -o build/kactl.tmp )...executed.
 
  (./build/kactl.tmp)
-runsystem(python2 content/tex/preprocessor.py --print-header "PolyDiv.h|PolyDiv.h" -o build/header2.tmp)...executed.
-
- (./build/header2.tmp) [10]
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/numerical/Polynomials/PolySqrt.h" -o build/kactl.tmp )...executed.
@@ -923,7 +928,7 @@ runsystem(rm -f build/kactl.tmp)...executed.
 runsystem(python2 content/tex/preprocessor.py -i "content/numerical/Misc/Simplex.h" -o build/kactl.tmp )...executed.
 
  (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "|Simplex.h" -o build/header2.tmp)...executed.
+runsystem(python2 content/tex/preprocessor.py --print-header "Simplex.h|Simplex.h" -o build/header2.tmp)...executed.
 
  (./build/header2.tmp) [11])) (./content/graphs (12)/chapter.tex
 Chapter 6.
@@ -941,15 +946,15 @@ runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/graphs (12)/Fundamentals/Dijkstra.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp)
+ (./build/kactl.tmp
+runsystem(python2 content/tex/preprocessor.py --print-header "Dijkstra.h|Dijkstra.h" -o build/header2.tmp)...executed.
+
+ (./build/header2.tmp) [12])
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/graphs (12)/Fundamentals/FloydWarshall.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "FloydWarshall.h|FloydWarshall.h" -o build/header2.tmp)...executed.
-
- (./build/header2.tmp) [12])
+ (./build/kactl.tmp)
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/graphs (12)/Trees (10)/LCAjumps (10.2).h" -o build/kactl.tmp )...executed.
@@ -988,14 +993,14 @@ runsystem(rm -f build/kactl.tmp)...executed.
 runsystem(python2 content/tex/preprocessor.py -i "content/graphs (12)/DFS/2SAT (12.1).h" -o build/kactl.tmp )...executed.
 
  (./build/kactl.tmp)
+runsystem(python2 content/tex/preprocessor.py --print-header "2SAT (12.1).h|2SAT (12.1).h" -o build/header2.tmp)...executed.
+
+ (./build/header2.tmp) [14]
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/graphs (12)/DFS/EulerPath (12.2).h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "EulerPath (12.2).h|EulerPath (12.2).h" -o build/header2.tmp)...executed.
-
- (./build/header2.tmp) [14])
+ (./build/kactl.tmp)
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/graphs (12)/DFS/BCC (12.4).h" -o build/kactl.tmp )...executed.
@@ -1103,10 +1108,10 @@ runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/geometry (13)/Polygons/Area.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp)
-runsystem(python2 content/tex/preprocessor.py --print-header "Area.h|Area.h" -o build/header2.tmp)...executed.
+ (./build/kactl.tmp
+runsystem(python2 content/tex/preprocessor.py --print-header "SegIntersect.h|Area.h" -o build/header2.tmp)...executed.
 
- (./build/header2.tmp) [19]
+ (./build/header2.tmp) [19])
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/geometry (13)/Polygons/InPoly.h" -o build/kactl.tmp )...executed.
@@ -1138,15 +1143,14 @@ File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <7> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 6.
-)
+runsystem(python2 content/tex/preprocessor.py --print-header "Circles.h|Circumcenter.h" -o build/header2.tmp)...executed.
+
+ (./build/header2.tmp) [20])
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/geometry (13)/Circles/MinEnclosingCircle.h" -o build/kactl.tmp )...executed.
 
  (./build/kactl.tmp)
-runsystem(python2 content/tex/preprocessor.py --print-header "MinEnclosingCircle.h|MinEnclosingCircle.h" -o build/header2.tmp)...executed.
-
- (./build/header2.tmp) [20]
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/geometry (13)/Misc/ClosestPair (13.2).h" -o build/kactl.tmp )...executed.
@@ -1186,6 +1190,9 @@ runsystem(rm -f build/kactl.tmp)...executed.
 runsystem(python2 content/tex/preprocessor.py -i "content/strings (14)/Lightweight/Manacher.h" -o build/kactl.tmp )...executed.
 
  (./build/kactl.tmp)
+runsystem(python2 content/tex/preprocessor.py --print-header "Manacher.h|Manacher.h" -o build/header2.tmp)...executed.
+
+ (./build/header2.tmp) [22]
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/strings (14)/Lightweight/MinRotation.h" -o build/kactl.tmp )...executed.
@@ -1195,10 +1202,7 @@ runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/strings (14)/Lightweight/LyndonFactorization.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "MinRotation.h|LyndonFactorization.h" -o build/header2.tmp)...executed.
-
- (./build/header2.tmp) [22])
+ (./build/kactl.tmp)
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/strings (14)/Lightweight/RabinKarp.h" -o build/kactl.tmp )...executed.
@@ -1218,15 +1222,15 @@ runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/strings (14)/Suffix Structures/PalTree.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp)
+ (./build/kactl.tmp
+runsystem(python2 content/tex/preprocessor.py --print-header "PalTree.h|PalTree.h" -o build/header2.tmp)...executed.
+
+ (./build/header2.tmp) [23])
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/strings (14)/Suffix Structures/SuffixArray (14.4).h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "SuffixArray (14.4).h|SuffixArray (14.4).h" -o build/header2.tmp)...executed.
-
- (./build/header2.tmp) [23])
+ (./build/kactl.tmp)
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/strings (14)/Suffix Structures/ReverseBW (14.4).h" -o build/kactl.tmp )...executed.
@@ -1271,18 +1275,18 @@ Package rerunfilecheck Info: File `kactl.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 16337 strings out of 492616
- 235024 string characters out of 6129482
- 1242334 words of memory out of 5000000
- 16204 multiletter control sequences out of 15000+600000
+ 16364 strings out of 492616
+ 235422 string characters out of 6129482
+ 1252334 words of memory out of 5000000
+ 16212 multiletter control sequences out of 15000+600000
  10638 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 44i,12n,60p,861b,2164s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 44i,12n,60p,861b,2142s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on build//kactl.pdf (26 pages, 1338847 bytes).
+Output written on build//kactl.pdf (26 pages, 1339486 bytes).
 PDF statistics:
- 4534 PDF objects out of 5155 (max. 8388607)
- 4443 compressed objects within 45 object streams
- 3581 named destinations out of 4296 (max. 500000)
+ 4554 PDF objects out of 5155 (max. 8388607)
+ 4463 compressed objects within 45 object streams
+ 3598 named destinations out of 4296 (max. 500000)
  70 words of extra memory for PDF output out of 10000 (max. 10000000)
 
