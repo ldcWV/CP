@@ -8,8 +8,8 @@
 \contentsline {section}{\numberline {3.2}Primality}{7}{section.3.2}% 
 \contentsline {section}{\numberline {3.3}Divisibility}{7}{section.3.3}% 
 \contentsline {chapter}{\numberline {4}Combinatorial}{7}{chapter.4}% 
-\contentsline {chapter}{\numberline {5}Numerical}{8}{chapter.5}% 
-\contentsline {section}{\numberline {5.1}Matrix}{8}{section.5.1}% 
+\contentsline {chapter}{\numberline {5}Numerical}{9}{chapter.5}% 
+\contentsline {section}{\numberline {5.1}Matrix}{9}{section.5.1}% 
 \contentsline {section}{\numberline {5.2}Polynomials}{9}{section.5.2}% 
 \contentsline {section}{\numberline {5.3}Misc}{11}{section.5.3}% 
 \contentsline {chapter}{\numberline {6}Graphs}{12}{chapter.6}% 
@@ -24,7 +24,7 @@
 \contentsline {section}{\numberline {7.2}Polygons}{20}{section.7.2}% 
 \contentsline {section}{\numberline {7.3}Circles}{20}{section.7.3}% 
 \contentsline {section}{\numberline {7.4}Misc}{21}{section.7.4}% 
-\contentsline {section}{\numberline {7.5}3D}{21}{section.7.5}% 
+\contentsline {section}{\numberline {7.5}3D}{22}{section.7.5}% 
 \contentsline {chapter}{\numberline {8}Strings}{22}{chapter.8}% 
 \contentsline {section}{\numberline {8.1}Lightweight}{22}{section.8.1}% 
 \contentsline {section}{\numberline {8.2}Suffix Structures}{23}{section.8.2}% 
