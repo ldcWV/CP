@@ -16,7 +16,8 @@ using namespace std;
 
 #define FAST ios::sync_with_stdio(0); cin.tie(0);
 #define finish(x) return cout << x << '\n', 0;
-#define debug(x) cerr << ">>> " << #x << " = " << x << "\n";
+#define dbg(x) cerr << ">>> " << #x << " = " << x << "\n";
+#define _ << " _ " <<
 
 typedef long long ll;
 typedef long double ld;
@@ -26,5 +27,5 @@ typedef pair<ld,ld> pd;
 typedef complex<ld> cd;
 
 int main() { FAST
-    
+	
 }

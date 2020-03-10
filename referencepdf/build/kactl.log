@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  29 FEB 2020 10:41
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.5.8)  10 MAR 2020 17:12
 entering extended mode
  \write18 enabled.
  %&-line parsing enabled.
@@ -642,7 +642,7 @@ File: lstlang1.sty 2019/02/27 1.8b listings language file
 File: lstlang1.sty 2019/02/27 1.8b listings language file
 )
 LaTeX Font Info:    Font shape `OT1/pcr/m/it' in size <7> not available
-(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 8.
+(Font)              Font shape `OT1/pcr/m/sl' tried instead on input line 10.
 )
 runsystem(rm -f build/kactl.tmp)...executed.
 
@@ -674,13 +674,13 @@ runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/data-structures/STL (5)/Rope.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp)pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+ (./build/kactl.tmppdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.8 	\kactlimport{LineContainer.h}
-                                   [1
+l.18 	for 
+          (rope<int>::iterator it = v.mutable_begin(); it != v.mutable_end()... [1
 
-]
+])
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/data-structures/LineContainer.h" -o build/kactl.tmp )...executed.
@@ -710,15 +710,15 @@ runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/data-structures/1D Range Queries (9.2)/SegTree (9.2).h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp)
+ (./build/kactl.tmp
+runsystem(python2 content/tex/preprocessor.py --print-header "SegTree (9.2).h|SegTree (9.2).h" -o build/header2.tmp)...executed.
+
+ (./build/header2.tmp) [2])
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/data-structures/1D Range Queries (9.2)/SegTreeBeats.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "SegTree (9.2).h|SegTreeBeats.h" -o build/header2.tmp)...executed.
-
- (./build/header2.tmp) [2])
+ (./build/kactl.tmp)
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/data-structures/1D Range Queries (9.2)/Lazy SegTree (15.2).h" -o build/kactl.tmp )...executed.
@@ -742,7 +742,7 @@ runsystem(rm -f build/kactl.tmp)...executed.
 runsystem(python2 content/tex/preprocessor.py -i "content/data-structures/1D Range Queries (9.2)/Treap (15.3).h" -o build/kactl.tmp )...executed.
 
  (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "|Treap (15.3).h" -o build/header2.tmp)...executed.
+runsystem(python2 content/tex/preprocessor.py --print-header "Treap (15.3).h|Treap (15.3).h" -o build/header2.tmp)...executed.
 
  (./build/header2.tmp) [4])
 runsystem(rm -f build/kactl.tmp)...executed.
@@ -789,7 +789,7 @@ runsystem(rm -f build/kactl.tmp)...executed.
 runsystem(python2 content/tex/preprocessor.py -i "content/number-theory (11.1)/Modular Arithmetic/ModSqrt.h" -o build/kactl.tmp )...executed.
 
  (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "ModSqrt.h|ModSqrt.h" -o build/header2.tmp)...executed.
+runsystem(python2 content/tex/preprocessor.py --print-header "ModMulLL.h|ModSqrt.h" -o build/header2.tmp)...executed.
 
  (./build/header2.tmp) [6])
 runsystem(rm -f build/kactl.tmp)...executed.
@@ -823,14 +823,14 @@ runsystem(rm -f build/kactl.tmp)...executed.
 runsystem(python2 content/tex/preprocessor.py -i "content/combinatorial (11.2)/IntPerm.h" -o build/kactl.tmp )...executed.
 
 (./build/kactl.tmp)
+runsystem(python2 content/tex/preprocessor.py --print-header "IntPerm.h|IntPerm.h" -o build/header2.tmp)...executed.
+
+ (./build/header2.tmp) [7]
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/combinatorial (11.2)/MatroidIntersect.h" -o build/kactl.tmp )...executed.
 
- (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "IntPerm.h|MatroidIntersect.h" -o build/header2.tmp)...executed.
-
- (./build/header2.tmp) [7])
+ (./build/kactl.tmp)
 runsystem(rm -f build/kactl.tmp)...executed.
 
 runsystem(python2 content/tex/preprocessor.py -i "content/combinatorial (11.2)/PermGroup.h" -o build/kactl.tmp )...executed.
@@ -860,7 +860,7 @@ runsystem(rm -f build/kactl.tmp)...executed.
 runsystem(python2 content/tex/preprocessor.py -i "content/numerical/Polynomials/VecOp.h" -o build/kactl.tmp )...executed.
 
  (./build/kactl.tmp
-runsystem(python2 content/tex/preprocessor.py --print-header "|VecOp.h" -o build/header2.tmp)...executed.
+runsystem(python2 content/tex/preprocessor.py --print-header "VecOp.h|VecOp.h" -o build/header2.tmp)...executed.
 
  (./build/header2.tmp) [9])
 runsystem(rm -f build/kactl.tmp)...executed.
@@ -1276,18 +1276,18 @@ Package rerunfilecheck Info: File `kactl.out' has not changed.
 (rerunfilecheck)             Checksum: <no file>.
  ) 
 Here is how much of TeX's memory you used:
- 16383 strings out of 492616
- 235637 string characters out of 6129482
- 1247143 words of memory out of 5000000
- 16223 multiletter control sequences out of 15000+600000
+ 16397 strings out of 492616
+ 235805 string characters out of 6129482
+ 1241457 words of memory out of 5000000
+ 16229 multiletter control sequences out of 15000+600000
  10638 words of font info for 42 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  44i,12n,60p,861b,2116s stack positions out of 5000i,500n,10000p,200000b,80000s
 {/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cmextra/cmex7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy5.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrr8a.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/urw/courier/ucrro8a.pfb>
-Output written on build//kactl.pdf (26 pages, 1341345 bytes).
+Output written on build//kactl.pdf (26 pages, 1341269 bytes).
 PDF statistics:
- 4564 PDF objects out of 5155 (max. 8388607)
- 4473 compressed objects within 45 object streams
- 3606 named destinations out of 4296 (max. 500000)
+ 4574 PDF objects out of 5155 (max. 8388607)
+ 4483 compressed objects within 45 object streams
+ 3614 named destinations out of 4296 (max. 500000)
  70 words of extra memory for PDF output out of 10000 (max. 10000000)
 
