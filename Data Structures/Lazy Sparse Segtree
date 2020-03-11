@@ -1,6 +1,6 @@
 template<class T> struct node {
     T val;
-	T lazy;
+    T lazy;
     int l, r;
     node* left;
     node* right;
