@@ -1,6 +1,6 @@
 template<class T, int SZ> struct segtree {
-	// modify these
-	T identity = 0;
+    // modify these
+    T identity = 0;
     T comb(T l, T r) {
         return l + r;
     }
