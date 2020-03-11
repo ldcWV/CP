@@ -18,7 +18,7 @@ template<class T, int SZ> struct segtree {
     T comb(T l, T r) {
         return min(l,r);
     }
-	T pushIdentity = 0;
+    T pushIdentity = 0;
     void push(node<T>* n) {
         n->val += n->lazy;
         if(n->l != n->r) {
