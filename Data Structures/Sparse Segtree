@@ -18,7 +18,7 @@ template<class T, int SZ> struct segtree {
         return l + r;
     }
     void updLeaf(node<T>* l, T val) {
-        l->val += val;
+        l->val = val;
     }
 
     node<T>* root;
