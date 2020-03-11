@@ -4,9 +4,9 @@ template<class T, int SZ> struct segtree {
     T comb(T l, T r) {
         return l + r;
     }
-	void updLeaf(T& l, T val) {
-		l = val;
-	}
+    void updLeaf(T& l, T val) {
+        l = val;
+    }
 
     T tree[2*SZ+1];
 	segtree() {
