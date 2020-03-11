@@ -11,10 +11,10 @@ template<class T> struct node {
     }
 };
 
-template<class T, int SZ> struct segtree{
+template<class T, int SZ> struct segtree {
     node<T>* root;
 
-	// modify these
+    // modify these
     T identity = 0;
     T comb(T l, T r) {
 		return l + r;
