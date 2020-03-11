@@ -17,8 +17,8 @@ template<class T, int SZ> struct segtree {
     T comb(T l, T r) {
         return l + r;
     }
-    void updLeaf(node<T>* l, T val) {
-        l->val = val;
+    void updLeaf(T& l, T val) {
+        l = val;
     }
 
     node<T>* root;
@@ -31,7 +31,7 @@ template<class T, int SZ> struct segtree {
     void updN(node<T>* n, int pos, T val) {
         if(pos < n->l || pos > n->r) return;
         if(n->l == n->r) {
-            updLeaf(n, val);
+            updLeaf(n->val, val);
             return;
         }
 
