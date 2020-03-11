@@ -12,17 +12,16 @@ template<class T> struct node {
 };
 
 template<class T, int SZ> struct segtree {
-    node<T>* root;
-
     // modify these
     T identity = 0;
     T comb(T l, T r) {
-		return l + r;
+        return l + r;
     }
     void updLeaf(node<T>* l, T val) {
         l->val += val;
     }
 
+    node<T>* root;
     segtree() {
         int ub = 1;
         while(ub < SZ) ub *= 2;
