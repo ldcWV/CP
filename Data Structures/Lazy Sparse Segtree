@@ -19,12 +19,12 @@ template<class T, int SZ> struct segtree {
         return l + r;
     }
     void push(node<T>* n) {
-		n->val += n->lazy * (n->r - n->l + 1);
-		if(n->l != n->r) {
-			n->left->lazy += n->lazy;
-			n->right->lazy += n->lazy;
-		}
-		n->lazy = identity;
+        n->val += n->lazy * (n->r - n->l + 1);
+        if(n->l != n->r) {
+            n->left->lazy += n->lazy;
+            n->right->lazy += n->lazy;
+        }
+        n->lazy = identity;
     }
 
     node<T>* root;
@@ -33,10 +33,10 @@ template<class T, int SZ> struct segtree {
         while(ub < SZ) ub *= 2;
         root = new node<T>(0, ub-1);
         root->val = identity;
-		root->lazy = identity;
+        root->lazy = identity;
     }
-	void propagate(node<T>* n) {
-		if(n->l != n->r) {
+    void propagate(node<T>* n) {
+        if(n->l != n->r) {
             int mid = ((n->l) + (n->r))/2;
             if(n->left == nullptr) {
                 n->left = new node<T>(n->l, mid);
@@ -50,25 +50,25 @@ template<class T, int SZ> struct segtree {
             }
         }
         push(n);
-	}
+    }
     void updN(node<T>* n, int i1, int i2, T val) {
-		propagate(n);
+        propagate(n);
         if(i2 < n->l || i1 > n->r) return;
-		if(i1 <= n->l && i2 >= n->r) {
-			n->lazy = val;
-			push(n);
+        if(i1 <= n->l && i2 >= n->r) {
+            n->lazy = val;
+            push(n);
             return;
         }
 
         updN(n->left, i1, i2, val);
         updN(n->right, i1, i2, val);
-		n->val = comb(n->left->val, n->right->val);
+        n->val = comb(n->left->val, n->right->val);
     }
     void upd(int i1, int i2, T val) {
         updN(root, i1, i2, val);
     }
     T queryN(node<T>* n, int i1, int i2) {
-		propagate(n);
+        propagate(n);
         if(i2 < n->l || i1 > n->r) return identity;
         if(n->l >= i1 && n->r <= i2) return n->val;
 
