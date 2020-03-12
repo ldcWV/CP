@@ -1,14 +1,20 @@
 template<class T, int SZ> struct segtree {
-    T tree[2*SZ+1], identity = 0;
-    segtree() {
-        M00(i, 2*SZ+1) tree[i] = identity;
+    // modify these
+    T identity = 0;
+    T comb(T l, T r) {
+        return l + r;
     }
-    T comb(T a, T b) {
-        return a+b; // can change this
+    void updLeaf(T& l, T val) {
+        l = val;
+    }
+
+    T tree[2*SZ+1];
+	segtree() {
+        M00(i, 2*SZ+1) tree[i] = identity;
     }
     void upd(int pos, T val) {
         pos += SZ+1;
-        tree[pos] = val; // update leaf
+        updLeaf(tree[pos], val);
         for(pos >>= 1; pos >= 1; pos >>= 1) {
             tree[pos] = comb(tree[2*pos], tree[2*pos+1]);
         }
