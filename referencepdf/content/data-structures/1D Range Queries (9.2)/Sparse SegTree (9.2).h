@@ -4,19 +4,30 @@
  * Verification: ~
  */ 
 
-template<class T, int SZ> struct segtree{
-    node<T>* root;
-    T identity = asdf(9001, "a"); //[comb(identity, other) = comb(other, identity) = other] or this won't work
-    T comb(T l, T r) {
-        T ans = asdf();
-        ans.a = l.a + r.a;
-        ans.b = l.b + r.b;
-        return ans;
+template<class T> struct node {
+    T val;
+    int l, r;
+    node* left;
+    node* right;
+    node(int l, int r) {
+        this -> l = l;
+        this -> r = r;
+        this -> left = nullptr;
+        this -> right = nullptr;
     }
-    void updLeaf(node<T>* l, T val) {
-        l->val = comb(l->val, val);
+};
+
+template<class T, int SZ> struct segtree {
+    // modify these
+    T identity = 0;
+    T comb(T l, T r) {
+        return l + r;
+    }
+    void updLeaf(T& l, T val) {
+        l = val;
     }
     
+    node<T>* root;
     segtree() {
         int ub = 1;
         while(ub < SZ) ub *= 2;
@@ -26,7 +37,7 @@ template<class T, int SZ> struct segtree{
     void updN(node<T>* n, int pos, T val) {
         if(pos < n->l || pos > n->r) return;
         if(n->l == n->r) {
-            updLeaf(n, val);
+            updLeaf(n->val, val);
             return;
         }
         

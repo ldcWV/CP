@@ -7,24 +7,36 @@
  * Verification: SPOJ Fenwick
  */
 
-template<class T> struct Seg { 
-	const T ID = 0; // comb(ID,b) must equal b
-	T comb(T a, T b) { return a+b; } // easily change this to min or max
-	int n; vector<T> seg;
-	void init(int _n) { n = _n; seg.rsz(2*n); }
-
-	void pull(int p) { seg[p] = comb(seg[2*p],seg[2*p+1]); }
-	void upd(int p, T value) {	// set value at position p
-		seg[p += n] = value;
-		for (p /= 2; p; p /= 2) pull(p);
-	}
-
-	T query(int l, int r) {	 // sum on interval [l, r]
-		T ra = ID, rb = ID; // make sure non-commutative operations work
-		for (l += n, r += n+1; l < r; l /= 2, r /= 2) {
-			if (l&1) ra = comb(ra,seg[l++]);
-			if (r&1) rb = comb(seg[--r],rb);
-		}
-		return comb(ra,rb);
-	}
+template<class T, int SZ> struct segtree {
+    // modify these
+    T identity = 0;
+    T comb(T l, T r) {
+        return l + r;
+    }
+    void updLeaf(T& l, T val) {
+        l = val;
+    }
+    
+    T tree[2*SZ+1];
+    segtree() {
+        M00(i, 2*SZ+1) tree[i] = identity;
+    }
+    void upd(int pos, T val) {
+        pos += SZ+1;
+        updLeaf(tree[pos], val);
+        for(pos >>= 1; pos >= 1; pos >>= 1) {
+            tree[pos] = comb(tree[2*pos], tree[2*pos+1]);
+        }
+    }
+    T query(int l, int r) {
+        l += SZ+1;
+        r += SZ+1;
+        T res = identity;
+        while(l <= r) {
+            if(l&1) res = comb(res, tree[l++]);
+            if(!(r&1)) res = comb(res, tree[r--]);
+            l >>= 1; r >>= 1;
+        }
+        return res;
+    }
 };

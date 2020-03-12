@@ -4,62 +4,88 @@
  * Verification: SPOJ Horrible
  */
 
-template<int SZ> struct lazysumtree {
-    node* root;
-    lazysumtree() {
+template<class T> struct node {
+    T val;
+    T lazy;
+    int l, r;
+    node* left;
+    node* right;
+    node(int l, int r) {
+        this -> l = l;
+        this -> r = r;
+        this -> left = nullptr;
+        this -> right = nullptr;
+    }
+};
+
+template<class T, int SZ> struct segtree {
+    // modify these
+    T combIdentity = 1e9;
+    T comb(T l, T r) {
+        return min(l,r);
+    }
+    T pushIdentity = 0;
+    void push(node<T>* n) {
+        n->val += n->lazy;
+        if(n->l != n->r) {
+            n->left->lazy += n->lazy;
+            n->right->lazy += n->lazy;
+        }
+        n->lazy = pushIdentity;
+    }
+    
+    node<T>* root;
+    segtree() {
         int ub = 1;
         while(ub < SZ) ub *= 2;
-        root = new node(0, ub-1);
+        root = new node<T>(0, ub-1);
+        root->val = pushIdentity;
+        root->lazy = pushIdentity;
     }
-    void propagate(node* n) {
+    void propagate(node<T>* n) {
         if(n->l != n->r) {
             int mid = ((n->l) + (n->r))/2;
-            if(n->left == nullptr) n->left = new node(n->l, mid);
-            if(n->right == nullptr) n->right = new node(mid+1, n->r);
-        }
-        if(n->lazy != 0) {
-            n->val += ((n->r) - (n->l) + 1) * n->lazy;
-            if(n->l != n->r) {
-                n->left->lazy += n->lazy;
-                n->right->lazy += n->lazy;
+            if(n->left == nullptr) {
+                n->left = new node<T>(n->l, mid);
+                n->left->val = pushIdentity;
+                n->left->lazy = pushIdentity;
             }
-            n->lazy = 0;
+            if(n->right == nullptr) {
+                n->right = new node<T>(mid+1, n->r);
+                n->right->val = pushIdentity;
+                n->right->lazy = pushIdentity;
+            }
         }
+        push(n);
     }
-    void addN(node* n, int i1, int i2, int val) {
+    void updN(node<T>* n, int i1, int i2, T val) {
         propagate(n);
         if(i2 < n->l || i1 > n->r) return;
-        if(n->l == n->r) {
-            n->val += val;
-            return;
-        }
         if(i1 <= n->l && i2 >= n->r) {
-            n->val += ((n->r) - (n->l) + 1)*val;
-            n->left->lazy += val;
-            n->right->lazy += val;
+            n->lazy = val;
+            push(n);
             return;
         }
         
-        addN(n->left, i1, i2, val);
-        addN(n->right, i1, i2, val);
-        n->val = n->left->val + n->right->val;
+        updN(n->left, i1, i2, val);
+        updN(n->right, i1, i2, val);
+        n->val = comb(n->left->val, n->right->val);
     }
-    void add(int i1, int i2, int val) {
-        addN(root, i1, i2, val);
+    void upd(int i1, int i2, T val) {
+        updN(root, i1, i2, val);
     }
-    int queryN(node* n, int i1, int i2) {
+    T queryN(node<T>* n, int i1, int i2) {
         propagate(n);
-        if(i2 < n->l || i1 > n->r) return 0;
-        if(n->l == n->r) {
-            return n->val;
-        }
-        if(i1 <= n->l && i2 >= n->r) {
-            return n->val;
-        }
+        if(i2 < n->l || i1 > n->r) return combIdentity;
+        if(n->l >= i1 && n->r <= i2) return n->val;
         
-        return queryN(n->left, i1, i2) + queryN(n->right, i1, i2);
+        T a = combIdentity;
+        if(n->left != nullptr) a = comb(a, queryN(n->left, i1, i2));
+        if(n->right != nullptr) a = comb(a, queryN(n->right, i1, i2));
+        
+        return a;
     }
-    int query(int i1, int i2) {
+    T query(int i1, int i2) {
         return queryN(root, i1, i2);
     }
 };
