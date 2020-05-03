@@ -12,6 +12,5 @@ run() {
 }
 
 crun() {
-	g++ -std=c++11 $1.cpp -o $1 &&
-		echo "Compiled!" && run $1 $2
+	co $1 && echo "Compiled!" && run $1 $2
 }
