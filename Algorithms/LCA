@@ -4,39 +4,39 @@ template<int SZ> struct tree {
     pair<int, ll> ppar[SZ][LGSZ];
     int depth[SZ];
     ll distfromroot[SZ];
-    
+ 
     void addEdge(int u, int v, int d) {
-        adj[u].PB(MP(v, d));
-        adj[v].PB(MP(u, d));
+        adj[u].pb(mp(v, d));
+        adj[v].pb(mp(u, d));
     }
     void dfs(int u, int dep, ll dis) {
         depth[u] = dep;
         distfromroot[u] = dis;
-        for(auto& v: adj[u]) if(ppar[u][0].F != v.F) {
-            ppar[v.F][0] = MP(u, v.S);
-            dfs(v.F, dep + 1, dis + v.S);
+        for(auto& v: adj[u]) if(ppar[u][0].f != v.f) {
+            ppar[v.f][0] = mp(u, v.s);
+            dfs(v.f, dep + 1, dis + v.s);
         }
     }
     void build() {
-        ppar[0][0] = MP(0, 0);
+        ppar[0][0] = mp(0, 0);
         M00(i, SZ) depth[i] = 0;
         dfs(0, 0, 0);
         MOO(i, 1, LGSZ) M00(j, SZ) {
-            ppar[j][i].F = ppar[ppar[j][i-1].F][i-1].F;
-            ppar[j][i].S = ppar[j][i-1].S + ppar[ppar[j][i-1].F][i-1].S;
+            ppar[j][i].f = ppar[ppar[j][i-1].f][i-1].f;
+            ppar[j][i].s = ppar[j][i-1].s + ppar[ppar[j][i-1].f][i-1].s;
         }
     }
     int lca(int u, int v) {
         if(depth[u] < depth[v]) swap(u, v);
-        M00d(i, LGSZ) if(depth[ppar[u][i].F] >= depth[v]) u = ppar[u][i].F;
+        M00d(i, LGSZ) if(depth[ppar[u][i].f] >= depth[v]) u = ppar[u][i].f;
         if(u == v) return u;
         M00d(i, LGSZ) {
-            if(ppar[u][i].F != ppar[v][i].F) {
-                u = ppar[u][i].F;
-                v = ppar[v][i].F;
+            if(ppar[u][i].f != ppar[v][i].f) {
+                u = ppar[u][i].f;
+                v = ppar[v][i].f;
             }
         }
-        return ppar[u][0].F;
+        return ppar[u][0].f;
     }
     ll dist(int u, int v) {
         return distfromroot[u] + distfromroot[v] - 2*distfromroot[lca(u, v)];
