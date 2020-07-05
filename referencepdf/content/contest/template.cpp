@@ -1,5 +1,4 @@
 #include <bits/stdc++.h>
-
 using namespace std;
 
 #define f first
@@ -27,5 +26,6 @@ typedef pair<ld,ld> pd;
 typedef complex<ld> cd;
 
 int main() { FAST
-	
+    
 }
+
