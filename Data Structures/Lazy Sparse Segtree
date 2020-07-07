@@ -5,18 +5,18 @@ template<class T> struct node {
     node* left;
     node* right;
     node(int l, int r) {
-        this -> l = l;
-        this -> r = r;
-        this -> left = nullptr;
-        this -> right = nullptr;
+        this->l = l;
+        this->r = r;
+        this->left = nullptr;
+        this->right = nullptr;
     }
 };
 
 template<class T, int SZ> struct segtree {
     // modify these
-    T combIdentity = 1e9;
+    T combIdentity = 1e17;
     T comb(T l, T r) {
-        return min(l,r);
+        return min(l, r);
     }
     T pushIdentity = 0;
     void push(node<T>* n) {
@@ -57,7 +57,6 @@ template<class T, int SZ> struct segtree {
         if(i2 < n->l || i1 > n->r) return;
         if(i1 <= n->l && i2 >= n->r) {
             n->lazy = val;
-            push(n);
             return;
         }
 
@@ -69,7 +68,7 @@ template<class T, int SZ> struct segtree {
         updN(root, i1, i2, val);
     }
     T queryN(node<T>* n, int i1, int i2) {
-        propagate(n);
+        if(n->lazy != pushIdentity) propagate(n);
         if(i2 < n->l || i1 > n->r) return combIdentity;
         if(n->l >= i1 && n->r <= i2) return n->val;
 
