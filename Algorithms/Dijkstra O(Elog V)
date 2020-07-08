@@ -1,30 +1,26 @@
 template<int SZ> struct dijkstra {
-    const int inf = 1e8;
-    vector<pi> adj[SZ];
+    vector<pair<int, ll>> adj[SZ];
     bool vis[SZ];
-    int d[SZ];
-
-    void addEdge(int u, int v, int l) {
+    ll d[SZ];
+ 
+    void addEdge(int u, int v, ll l) {
         adj[u].pb(mp(v, l));
     }
-    int dist(int v) {
+    ll dist(int v) {
         return d[v];
     }
     void build(int u) {
-        priority_queue<pi, vector<pi>, greater<pi>> pq;
-        M00(i, SZ) d[i] = inf;
+        M00(i, SZ) vis[i] = 0;
+        M00(i, SZ) d[i] = 1e17;
         d[u] = 0;
-        pq.push(mp(0, u));
-        while(!pq.empty()) {
-            pi t = pq.top(); pq.pop();
-            if(vis[t.s]) continue;
+        while(1) {
+            pair<ll, int> t = mp(1e17, -1);
+            M00(i, SZ) if(!vis[i]) ckmin(t, mp(d[i], i));
+            if(t.s == -1 || vis[t.s]) return;
             vis[t.s] = 1;
-
-            for(auto v: adj[t.s]) {
-                if(d[v.f] > d[t.s] + v.s) {
-                    d[v.f] = d[t.s] + v.s;
-                    pq.push(mp(d[t.s]+v.s, v.f));
-                }
+ 
+            for(auto& v: adj[t.s]) if(!vis[v.f]) {
+                ckmin(d[v.f], d[t.s] + v.s);
             }
         }
     }
