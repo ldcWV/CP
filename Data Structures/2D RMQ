@@ -1,0 +1,46 @@
+template<int SZ> struct RMQ {
+    const static int LGSZ = 33-__builtin_clz(SZ-1);
+    int rmq[SZ][LGSZ];
+    void upd(int idx, int val) {
+        rmq[idx][0] = val;
+    }
+    void build(int n) {
+        int lgn = 33 - __builtin_clz(n-1);
+        MOO(i, 1, lgn) {
+            M00(j, n) if(j+(1<<i)-1 < n) {
+                rmq[j][i] = min(rmq[j][i-1], rmq[j+(1<<(i-1))][i-1]);
+            }
+        }
+    }
+    int query(int l, int r) {
+        int len = r-l+1;
+        int hlen = 31 - __builtin_clz(len-1);
+        return min(rmq[l][hlen], rmq[r-(1<<hlen)+1][hlen]);
+    }
+};
+
+
+template<int W, int H> struct RMQ2D {
+    const static int LGW = 33-__builtin_clz(W-1);
+    RMQ<H> rmq2d[W][LGW];
+    void upd(int i, int j, int val) {
+        rmq2d[i][0].upd(j, val);
+    }
+    void build(int n, int m) {
+        M00(i, n) rmq2d[i][0].build(m);
+        int lgn = 33 - __builtin_clz(n-1);
+        int lgm = 33 - __builtin_clz(m-1);
+        MOO(i, 1, lgn) {
+            M00(j, n) if(j+(1<<i)-1 < n) {
+                M00(a, m) M00(b, lgm) {
+                    rmq2d[j][i].rmq[a][b] = min(rmq2d[j][i-1].rmq[a][b], rmq2d[j+(1<<(i-1))][i-1].rmq[a][b]);
+                }
+            }
+        }
+    }
+    int query(int i1, int j1, int i2, int j2) {
+        int len = i2-i1+1;
+        int hlen = 31 - __builtin_clz(len-1);
+        return min(rmq2d[i1][hlen].query(j1,j2), rmq2d[i2-(1<<hlen)+1][hlen].query(j1,j2));
+    }
+};
