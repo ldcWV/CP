@@ -14,7 +14,7 @@ template<int SZ> struct RMQ {
     }
     int query(int l, int r) {
         int len = r-l+1;
-        int lglen = 31 - __builtin_clz(len-1);
-        return min(rmq[l][lglen], rmq[r-(1<<lglen)+1][lglen]);
+        int hlen = 31 - __builtin_clz(len-1);
+        return min(rmq[l][hlen], rmq[r-(1<<hlen)+1][hlen]);
     }
 };
