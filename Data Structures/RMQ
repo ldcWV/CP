@@ -1,0 +1,20 @@
+template<int SZ> struct RMQ {
+    const static int LGSZ = 33-__builtin_clz(SZ-1);
+    int rmq[SZ][LGSZ];
+    void upd(int idx, int val) {
+        rmq[idx][0] = val;
+    }
+    void build(int n) {
+        int lgn = 33 - __builtin_clz(n-1);
+        MOO(i, 1, lgn) {
+            M00(j, n) if(j+(1<<i)-1 < n) {
+                rmq[j][i] = min(rmq[j][i-1], rmq[j+(1<<(i-1))][i-1]);
+            }
+        }
+    }
+    int query(int l, int r) {
+        int len = r-l+1;
+        int lglen = 31 - __builtin_clz(len-1);
+        return min(rmq[l][lglen], rmq[r-(1<<lglen)+1][lglen]);
+    }
+};
