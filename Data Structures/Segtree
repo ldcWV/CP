@@ -9,7 +9,7 @@ template<class T, int SZ> struct segtree {
     }
 
     T tree[2*SZ+1];
-	segtree() {
+    segtree() {
         M00(i, 2*SZ+1) tree[i] = identity;
     }
     void upd(int pos, T val) {
