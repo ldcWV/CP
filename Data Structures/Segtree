@@ -1,8 +1,8 @@
 template<class T, int SZ> struct segtree {
     // modify these
-    T identity = 0;
+    T identity = matrix();
     T comb(T l, T r) {
-        return l + r;
+        return l * r;
     }
     void updLeaf(T& l, T val) {
         l = val;
@@ -22,12 +22,13 @@ template<class T, int SZ> struct segtree {
     T query(int l, int r) {
         l += SZ+1;
         r += SZ+1;
-        T res = identity;
+        T resleft = identity;
+        T resright = identity;
         while(l <= r) {
-            if(l&1) res = comb(res, tree[l++]);
-            if(!(r&1)) res = comb(res, tree[r--]);
+            if(l&1) resleft = comb(resleft, tree[l++]);
+            if(!(r&1)) resright = comb(tree[r--], resright);
             l >>= 1; r >>= 1;
         }
-        return res;
+        return comb(resleft, resright);
     }
 };
