@@ -1,8 +1,8 @@
 template<class T, int SZ> struct segtree {
     // modify these
-    T identity = matrix();
+    T identity = 0;
     T comb(T l, T r) {
-        return l * r;
+        return l + r;
     }
     void updLeaf(T& l, T val) {
         l = val;
