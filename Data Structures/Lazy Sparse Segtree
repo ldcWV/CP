@@ -57,6 +57,7 @@ template<class T, int SZ> struct segtree {
         if(i2 < n->l || i1 > n->r) return;
         if(i1 <= n->l && i2 >= n->r) {
             n->lazy = val;
+            propagate(n);
             return;
         }
 
