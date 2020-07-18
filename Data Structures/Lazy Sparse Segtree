@@ -68,7 +68,7 @@ template<class T, int SZ> struct segtree {
         updN(root, i1, i2, val);
     }
     T queryN(node<T>* n, int i1, int i2) {
-        if(n->lazy != pushIdentity) propagate(n);
+        propagate(n);
         if(i2 < n->l || i1 > n->r) return combIdentity;
         if(n->l >= i1 && n->r <= i2) return n->val;
 
