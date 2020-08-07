@@ -1,0 +1,39 @@
+template<class T, int sz> struct BIT {
+    T b[sz+1];
+    BIT() {
+        M00(i, sz+1) b[i] = 0;
+    }
+    void add(int k, T val) {
+        k++;
+        for(; k <= sz; k+=(k&-k)) b[k] += val;
+    }
+    T psum(int ind) {
+        T ans = 0;
+        ind++;
+        for(; ind>0; ind-=(ind&-ind)) ans+=b[ind];
+        return ans;
+    }
+    T sum(int l, int r) {
+        return psum(r) - psum(l-1);
+    }
+};
+ 
+template<class T, int sz> struct BITR {
+    BIT<T, sz> b1;
+    BIT<T, sz> b2;
+    void add(int l, int r, T val) {
+        b1.add(l, val);
+        b2.add(l, val*(l-1));
+        if(r+1 < sz) {
+            b1.add(r+1, -val);
+            b2.add(r+1, -val*r);
+        }
+    }
+    T psum(int ind) {
+        return b1.psum(ind) * ind - b2.psum(ind);
+    }
+    T sum(int l, int r) {
+        if(l == 0) return psum(r);
+        return psum(r) - psum(l-1);
+    }
+};
