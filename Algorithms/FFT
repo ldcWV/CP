@@ -10,7 +10,7 @@ namespace FFT {
     vcd DFT(vcd& a) {
         int n = (int)a.size(); int s = getsz(n);
         vcd A(n); M00(i, n) A[rev(s, i)] = a[i];
-        
+
         MOO(i, 1, s+1) {
             int m = (1<<i);
             cd wm = cd(cos(2*M_PI/m), sin(2*M_PI/m));
@@ -48,10 +48,10 @@ namespace FFT {
         return res;
     }
     vector<ll> conv(vector<ll> a, vector<ll> b) {
-        vcd A; for(ll v: a) A.PB(cd(v, 0));
-        vcd B; for(ll v: b) B.PB(cd(v, 0));
+        vcd A; for(ll v: a) A.pb(cd(v, 0));
+        vcd B; for(ll v: b) B.pb(cd(v, 0));
         vcd r = conv(A, B);
-        vector<ll> res; for(cd v: r) res.PB(round(v.real()));
+        vector<ll> res; for(cd v: r) res.pb(round(v.real()));
         return res;
     }
 }
